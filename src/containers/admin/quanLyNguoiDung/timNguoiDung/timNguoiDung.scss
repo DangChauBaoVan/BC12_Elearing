@@ -1,10 +1,20 @@
 .timNguoiDung {
-  margin-top: 0;
-  float: left;
-  margin-left: -17px;
+  margin-top: 30px;
+  margin-left: -10px;
+  padding: 0.5rem 1rem;
+  width: 133rem;
   .form-inline {
     .form-control {
-      width: 74.38rem;
+      width: 100%;
+      height: 35px;
+      font-size: 17px;
+      border-radius: 4px;
+      padding-left: 30px;
     }
+  }
+  .iconSearch {
+    margin-top: -3.5rem;
+    margin-left: 1rem;
+    color: #ffd149;
   }
 }

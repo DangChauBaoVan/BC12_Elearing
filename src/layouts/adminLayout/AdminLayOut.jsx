@@ -1,19 +1,28 @@
 import React from "react";
 import withLayout from "hocs/withLayouts";
+import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 //scss
 import "./adminLayout.scss";
 //ant design
 import { Layout, Menu } from "antd";
 import { AppstoreOutlined, TeamOutlined } from "@ant-design/icons";
-import { Link, NavLink, Redirect } from "react-router-dom";
-import { useSelector } from "react-redux";
-import ListUser from "containers/admin/quanLyNguoiDung/danhSachNguoiDung/ListUser";
-const { SubMenu } = Menu;
-
+import { actLogOut } from "containers/shared/Auth/Login/module/action";
 const { Header, Content, Sider } = Layout;
 
 function AdminLayout({ children }) {
-  // const currentUser = useSelector((state) => state.authReducer.currentUser);
+  const { hoTen, maLoaiNguoiDung } = useSelector(
+    (state) => state.loginReducer.currentUser
+  );
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const handleOut = () => {
+    dispatch(actLogOut());
+    history.push("/");
+  };
+  if (maLoaiNguoiDung === "HV") {
+    return <Redirect to="/" />;
+  }
 
   return (
     <Layout color={"#ffa940"}>
@@ -40,14 +49,33 @@ function AdminLayout({ children }) {
         </Menu>
       </Sider>
       <Layout className="site-layout" style={{ marginLeft: 200 }}>
-        <Header className="site-layout-background" style={{ padding: 0 }} />
-        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, textAlign: "center", height: "100vh" }}
-          >
-            {children}
+        <Header className="site-layout-background">
+          <div className="thong__tin__admin">
+            <p>Chào! {hoTen} </p>
+            <div className="dropdown drop__admin">
+              <span
+                className="dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                style={{ fontSize: "3rem" }}
+              ></span>
+              <span
+                className="dropdown-menu drop__menu"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <a className="dropdown-item drop__item">
+                  Cập nhật thông tin
+                </a>
+                <a className="dropdown-item drop__item" onClick={handleOut}>
+                  LogOut
+                </a>
+              </span>
+            </div>
           </div>
+        </Header>
+        <Content className="admin__content">
+          <div className="site-layout-background">{children}</div>
         </Content>
       </Layout>
     </Layout>

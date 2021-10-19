@@ -1,20 +1,18 @@
 .quanLyNguoiDung {
   margin-top: -4rem;
   .themNguoiDung {
-    background-color: #ffa000;
-    color: white;
     float: left;
     margin-top: 2.3rem;
-    color: white;
     &:active {
       background-color: #e3960c;
     }
   }
   .quanLyNguoiDungTitle {
     position: relative;
-    top: -33px;
-    margin-bottom: -48px;
+    top: -34px;
+    left: -10rem;
     font-weight: 800;
     color: moccasin;
+    font-size: 25px;
   }
 }

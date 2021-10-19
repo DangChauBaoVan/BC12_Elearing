@@ -9,7 +9,7 @@ export default function QuanLyNguoiDung() {
   const history = useHistory();
   return (
     <div className="quanLyNguoiDung">
-      <h3 className="quanLyNguoiDungTitle">QUẢN LÝ NGƯỜI DÙNG</h3>
+      <span className="quanLyNguoiDungTitle">QUẢN LÝ NGƯỜI DÙNG</span>
       <button
         onClick={() => history.push("/admin/quanlynguoidung/themNguoiDung")}
         type="button"

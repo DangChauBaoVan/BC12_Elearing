@@ -7,7 +7,7 @@ export default function QuanLyKhoaHoc() {
   const history = useHistory();
   return (
     <div className="quanLyNguoiDung">
-      <h3 className="quanLyNguoiDungTitle">QUẢN LÝ KHÓA HỌC</h3>
+      <span className="quanLyNguoiDungTitle">QUẢN LÝ KHÓA HỌC</span>
       <button
         onClick={() => history.push("/admin/quanlykhoahoc/themKhoaHoc")}
         type="button"

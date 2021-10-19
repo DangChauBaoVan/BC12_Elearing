@@ -1,16 +1,11 @@
-.list__user__table {
-  color: black;
-  border: slategray solid 1px;
-}
 .paginateBttn {
   width: 80%;
   height: 40%;
   list-style: none;
   display: flex;
   justify-content: center;
-  position: absolute;
-  top: 35rem;
-  right: 7rem;
+  margin: auto;
+  margin-top: 30px;
   a {
     padding: 10px;
     margin: 5px;
@@ -32,4 +27,15 @@
     color: slategray;
     cursor: no-drop;
   }
+}
+
+.btn__edit__icon {
+  width: 19px;
+  padding-left: 13px;
+  margin: auto;
+}
+
+.border__table {
+  border: slategray solid 1px;
+   height: 34rem
 }

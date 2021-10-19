@@ -4,32 +4,32 @@ import { Link } from "react-router-dom";
 export default function ThemKhoaHoc() {
   return (
     <div className="text-left">
-      <h3>THÊM KHÓA HỌC</h3>
+      <h1>THÊM KHÓA HỌC</h1>
       <form className="row">
         <div className="col-6">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Mã khóa học</label>
-            <input type="text" className="form-control" />
+            <h3 htmlFor="exampleInputEmail1">Mã khóa học</h3>
+            <input type="text" className="form-control"/>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Tên khóa học</label>
+            <h3 htmlFor="exampleInputEmail1">Tên khóa học</h3>
             <input type="password" className="form-control" />
           </div>
           <div className="form-group">
-            <label for="exampleFormControlSelect1">Danh mục khóa học</label>
+            <h3 for="exampleFormControlSelect1">Danh mục khóa học</h3>
             <select class="form-control">
               <option>Lập trình FontEnd</option>
               <option>Lập trình BackEnd</option>
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Ngày tạo khóa học</label>
+            <h3 htmlFor="exampleInputEmail1">Ngày tạo khóa học</h3>
             <input type="date" className="form-control" />
           </div>
         </div>
         <div className="col-6">
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Đánh giá</label>
+            <h3 htmlFor="exampleInputEmail1">Đánh giá</h3>
             <input
               type="text"
               className="form-control"
@@ -38,17 +38,17 @@ export default function ThemKhoaHoc() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Lượt xem</label>
+            <h3 htmlFor="exampleInputPassword1">Lượt xem</h3>
             <input type="number" className="form-control" />
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Người tạo</label>
+            <h3 htmlFor="exampleInputPassword1">Người tạo</h3>
             <input type="text" className="form-control" />
           </div>
           <div className="row">
             <div className="col-6">
               <div className="form-group">
-                <label htmlFor="exampleInputPassword1">Hình ảnh</label>
+                <h3 htmlFor="exampleInputPassword1">Hình ảnh</h3>
                 <input type="file" className="form-control" />
               </div>
             </div>
@@ -59,9 +59,9 @@ export default function ThemKhoaHoc() {
         </div>
         <div className="col-12">
           <div className="form-group">
-            <label htmlFor="exampleFormControlTextarea1">
+            <h3 htmlFor="exampleFormControlTextarea1">
               Mô tả
-            </label>
+            </h3>
             <textarea
               className="form-control"
               id="exampleFormControlTextarea1"
@@ -73,7 +73,7 @@ export default function ThemKhoaHoc() {
         <Link to="/admin/quanlyKhoaHoc" className="themNguoiDungLinkHome">
           {"<<"} Trở lại
         </Link>
-        <button type="submit" className="btn btn-primary themNguoiDungBtnHome">
+        <button type="submit" className="btn btn-primary themNguoiDungBtn">
           Thêm
         </button>
       </form>
