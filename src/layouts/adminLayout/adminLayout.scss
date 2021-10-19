@@ -1,0 +1,19 @@
+$color-1: #c67100;
+$color-2: #ffd149;
+$color-3: #ffa000;
+$color-black: black;
+
+.ant-layout-sider {
+  background-color: $color-3;
+  .ant-menu.ant-menu-dark {
+    background-color: $color-3;
+    &:not(.ant-menu-horizontal) {
+      .ant-menu-item-selected {
+        background-color: $color-2;
+      }
+    }
+  }
+}
+.ant-layout-header {
+  background: $color-1;
+}
