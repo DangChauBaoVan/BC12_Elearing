@@ -2,17 +2,21 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function ThemKhoaHoc() {
+
+
+
+
   return (
     <div className="text-left">
       <h1>THÊM KHÓA HỌC</h1>
       <form className="row">
         <div className="col-6">
           <div className="form-group">
-            <h3 htmlFor="exampleInputEmail1">Mã khóa học</h3>
-            <input type="text" className="form-control"/>
+            <h3>Mã khóa học</h3>
+            <input type="text" className="form-control" name=""/>
           </div>
           <div className="form-group">
-            <h3 htmlFor="exampleInputEmail1">Tên khóa học</h3>
+            <h3>Tên khóa học</h3>
             <input type="password" className="form-control" />
           </div>
           <div className="form-group">
@@ -23,13 +27,13 @@ export default function ThemKhoaHoc() {
             </select>
           </div>
           <div className="form-group">
-            <h3 htmlFor="exampleInputEmail1">Ngày tạo khóa học</h3>
+            <h3>Ngày tạo khóa học</h3>
             <input type="date" className="form-control" />
           </div>
         </div>
         <div className="col-6">
           <div className="form-group">
-            <h3 htmlFor="exampleInputEmail1">Đánh giá</h3>
+            <h3>Đánh giá</h3>
             <input
               type="text"
               className="form-control"

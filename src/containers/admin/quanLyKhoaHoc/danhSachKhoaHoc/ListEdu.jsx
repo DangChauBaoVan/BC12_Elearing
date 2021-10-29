@@ -10,6 +10,8 @@ import TimKhoaHoc from "../timKhoaHoc/TimKhoaHoc";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
+import "./listEdu.scss"
+
 export default function ListEdu() {
   const arrEdu = useSelector((state) => state.eduReducer.edu);
 
@@ -87,7 +89,6 @@ export default function ListEdu() {
                       <button
                         data-toggle="modal"
                         data-target="#exampleModalLong"
-                        onClick={updateQuantity()}
                         className="btn btn-info btn__edit__icon"
                       >
                         <Icon icon={faPen} />

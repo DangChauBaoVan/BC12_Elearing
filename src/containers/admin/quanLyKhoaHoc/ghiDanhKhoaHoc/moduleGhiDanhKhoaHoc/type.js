@@ -1,0 +1,1 @@
+export const GHI_DANH_NGUOI_DUNG = "GHI_DANH_NGUOI_DUNG"

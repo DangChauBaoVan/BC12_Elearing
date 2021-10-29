@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import { actGetAllUser } from "../module/action";
 import ReactPaginate from "react-paginate";
 import "./listUser.scss";
@@ -8,12 +9,15 @@ import TimNguoiDung from "../timNguoiDung/TimNguoiDung";
 //font awesome
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import { actXoaNguoiDung } from "./action";
 
 export default function ListUser() {
   const arrUser = useSelector((state) => state.userReducer.user);
-
+  const history = useHistory();
   const dispatch = useDispatch();
-
+  const accessToken = useSelector(
+    (state) => state.loginReducer.currentUser.accessToken
+  );
   useEffect(() => {
     dispatch(actGetAllUser());
   }, []);
@@ -50,10 +54,17 @@ export default function ListUser() {
     // console.log(e.target.value);
     dispatch(actGetAllUser(e.target.value));
   };
+  // xóa người dùng
+  const xoaNguoiDung = (taiKhoan) => {
+    dispatch(actXoaNguoiDung(taiKhoan, accessToken))
+  }
   return (
     <div>
       <TimNguoiDung searchValue={searchValue} />
-      <div className="border__table" style={{ border: "slategray solid 1px", height: "34rem" }}>
+      <div
+        className="border__table"
+        style={{ border: "slategray solid 1px", height: "34.3rem" }}
+      >
         <table class="table">
           <thead>
             <tr>
@@ -89,12 +100,18 @@ export default function ListUser() {
                       </button>
                     </span>
                     <span data-toggle="popover" title="Sửa thông tin">
-                      <button className="btn btn-primary btn__edit__icon">
+                      <button
+                        className="btn btn-primary btn__edit__icon"
+                        onClick={() => history.push({
+                          pathname:"/admin/quanlynguoidung/capnhatnguoidung",
+                          state:{user}
+                        })}
+                      >
                         <Icon icon={faEdit} />
                       </button>
                     </span>
                     <span data-toggle="popover" title="Xóa">
-                      <button className="btn btn-danger btn__edit__icon">
+                      <button className="btn btn-danger btn__edit__icon" onClick={() => xoaNguoiDung(taiKhoan)}>
                         <Icon icon={faUserSlash} />
                       </button>
                     </span>
