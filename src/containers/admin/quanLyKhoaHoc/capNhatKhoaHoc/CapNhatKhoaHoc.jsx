@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import moment from "moment";
 import { actCapNhatKhoaHoc } from "./module/action";
+import { actMaDanhMuc } from "../themKhoaHoc/module/action";
 
 export default function CapNhatKhoaHoc(props) {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actMaDanhMuc());
+  }, []);
+
+  //danh sách mã danh mục để chọn
+  const maDanhMucKhoaHoc = useSelector(
+    (state) => state.maDanhMucReducer.maDanhMucKhoaHoc
+  );
 
   const history = useHistory();
 
@@ -21,7 +30,7 @@ export default function CapNhatKhoaHoc(props) {
     biDanh,
     danhGia,
     luotXem,
-  } = props.location.state;
+  } = props.location.state.edu;
 
   const [form, setForm] = useState({
     maKhoaHoc,
@@ -98,7 +107,7 @@ export default function CapNhatKhoaHoc(props) {
       formData.append(key, form[key]);
     }
     // console.log(formData.get("File"));
-    dispatch(actCapNhatKhoaHoc(formData));
+    dispatch(actCapNhatKhoaHoc(formData, history));
   };
 
   return (
@@ -129,29 +138,19 @@ export default function CapNhatKhoaHoc(props) {
             />
           </div>
           <div className="form-group">
-            <h3 htmlFor="exampleInputEmail1">Bí danh</h3>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Ex: beginning-c-programming-from-beginner-to-beyond"
-              onChange={handleForm}
-              name="biDanh"
-              value={form.biDanh}
-            />
-          </div>
-          <div className="form-group">
             <h3 for="exampleFormControlSelect1">Danh mục khóa học</h3>
             <select
               class="form-control"
               onChange={handleSel}
               value={form.maDanhMucKhoaHoc}
             >
-              <option value="BackEnd">Lập trình Backend</option>
-              <option value="Design">Thiết kế Web</option>
-              <option value="DiDong">Lập trình di động</option>
-              <option value="FrontEnd">Lập trình Front end</option>
-              <option value="FullStack">Lập trình Full Stack</option>
-              <option value="TuDuy">Tư duy lập trình</option>
+              <option disabled selected>
+                --select--
+              </option>
+              {maDanhMucKhoaHoc.map((danhMuc) => {
+                const { maDanhMuc, tenDanhMuc } = danhMuc;
+                return <option value={maDanhMuc}>{tenDanhMuc}</option>;
+              })}
             </select>
           </div>
           <div className="form-group">
@@ -160,17 +159,6 @@ export default function CapNhatKhoaHoc(props) {
           </div>
         </div>
         <div className="col-6">
-          <div className="form-group">
-            <h3>Lượt xem</h3>
-            <input
-              type="number"
-              min={0}
-              value={form.luotXem}
-              className="form-control"
-              onChange={handleForm}
-              name="luotXem"
-            />
-          </div>
           <div className="form-group">
             <h3>Người tạo</h3>
             <input
@@ -200,7 +188,7 @@ export default function CapNhatKhoaHoc(props) {
           <div className="form-group">
             <h3 htmlFor="exampleFormControlTextarea1">Mô tả</h3>
             <textarea
-            style={{height:"111.3px"}}
+              style={{ height: "111.3px" }}
               className="form-control"
               id="exampleFormControlTextarea1"
               rows={3}

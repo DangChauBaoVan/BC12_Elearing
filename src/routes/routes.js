@@ -5,6 +5,7 @@ import QuanLyKhoaHoc from "containers/admin/quanLyKhoaHoc/QuanLyKhoaHoc";
 import ThemNguoiDung from "containers/admin/quanLyNguoiDung/themNguoiDung/ThemNguoiDung";
 import ThemKhoaHoc from "containers/admin/quanLyKhoaHoc/themKhoaHoc/ThemKhoaHoc";
 import CapNhatNguoiDung from "containers/admin/quanLyNguoiDung/capNhatNguoiDung/CapNhatNguoiDung";
+import CapNhatKhoaHoc from "containers/admin/quanLyKhoaHoc/capNhatKhoaHoc/CapNhatKhoaHoc";
 
 export const clientRoutes = [
   {
@@ -25,6 +26,12 @@ export const adminRoutes = [
   {
     path: "/admin/quanlykhoahoc/themKhoaHoc",
     component: ThemKhoaHoc,
+    exact: true,
+    isPrivate: true,
+  },
+  {
+    path: "/admin/quanlykhoahoc/capnhatkhoahoc",
+    component: CapNhatKhoaHoc,
     exact: false,
     isPrivate: true,
   },

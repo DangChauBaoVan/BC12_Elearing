@@ -63,7 +63,6 @@ export default function ListUser() {
       <TimNguoiDung searchValue={searchValue} />
       <div
         className="border__table"
-        style={{ border: "slategray solid 1px", height: "34.3rem" }}
       >
         <table class="table">
           <thead>

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import { actCapNhatNguoiDung, actLayThongTin } from "./module/action";
-import "./capNhatNguoiDung.scss";
 
 export default function CapNhatNguoiDung(props) {
   const accessToken = useSelector(

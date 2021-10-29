@@ -1,9 +1,9 @@
-import { apiaKhoaHoc } from "assets/apiKhoaHoc/apiaKhoaHoc";
+import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
 import { actGetAllEdu } from "../module/action";
 
 export const actXoaKhoaHoc = (maKhoaHoc, accessToken) => {
   return (dispatch) =>
-    apiaKhoaHoc
+    apiKhoaHoc
       .xoaKhoaHoc(maKhoaHoc, accessToken)
       .then((res) => {
         alert("Xóa thành công");

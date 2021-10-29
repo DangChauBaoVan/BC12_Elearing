@@ -1,12 +1,13 @@
-import { apiaKhoaHoc } from "assets/apiKhoaHoc/apiaKhoaHoc";
+import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
 
-export const actCapNhatKhoaHoc = (form) => {
+export const actCapNhatKhoaHoc = (form, history) => {
   return (dispatch) => {
-    apiaKhoaHoc
+    apiKhoaHoc
       .capNhatKhoaHoc(form)
       .then((res) => {
         console.log(res.data)
         alert('cập nhật thành công')
+        history.push("/admin/quanlykhoahoc")
       })
       .catch((err) => {
         alert(err.response?.data)

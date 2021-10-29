@@ -1,4 +1,4 @@
-import { apiaKhoaHoc } from "assets/apiKhoaHoc/apiaKhoaHoc";
+import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
 import {
   GET_ALL_EDU_REQUEST,
   GET_ALL_EDU_SUCCESS,
@@ -21,7 +21,7 @@ export const actGetAllEdu = (tenKhoaHoc = '') => {
   return async (dispatch) => {
     dispatch(actGetAllEduRequest());
     try {
-      const result = await apiaKhoaHoc.getAllEdu(tenKhoaHoc);
+      const result = await apiKhoaHoc.getAllEdu(tenKhoaHoc);
       // console.log(result.data);
       dispatch(actGetAllEduSuccess(result.data));
     } catch (err) {

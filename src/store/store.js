@@ -7,11 +7,13 @@ import thunk from "redux-thunk";
 import userReducer from "containers/admin/quanLyNguoiDung/module/userReducer";
 import eduReducer from "containers/admin/quanLyKhoaHoc/module/eduReducer";
 import loginReducer from "containers/shared/Auth/Login/module/reducer";
+import maDanhMucReducer from "containers/admin/quanLyKhoaHoc/themKhoaHoc/module/reducer";
 
 const rootReducer = combineReducers({
   userReducer,
   loginReducer,
   eduReducer,
+  maDanhMucReducer,
 });
 
 const persistConfig = {

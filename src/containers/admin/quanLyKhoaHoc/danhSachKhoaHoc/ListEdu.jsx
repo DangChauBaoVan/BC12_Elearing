@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actGetAllEdu } from "../module/action";
-
 import ReactPaginate from "react-paginate";
+import { useHistory } from "react-router-dom";
 //component
 import GhiDanhKhoaHoc from "../ghiDanhKhoaHoc/GhiDanhKhoaHoc";
 import TimKhoaHoc from "../timKhoaHoc/TimKhoaHoc";
@@ -10,12 +10,17 @@ import TimKhoaHoc from "../timKhoaHoc/TimKhoaHoc";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
-import "./listEdu.scss"
+import "./listEdu.scss";
+import { actXoaKhoaHoc } from "./action";
 
 export default function ListEdu() {
   const arrEdu = useSelector((state) => state.eduReducer.edu);
-
+  const history = useHistory();
   const dispatch = useDispatch();
+
+  const accessToken = useSelector(
+    (state) => state.loginReducer.currentUser.accessToken
+  );
 
   useEffect(() => {
     dispatch(actGetAllEdu());
@@ -95,12 +100,31 @@ export default function ListEdu() {
                       </button>
                     </span>
                     <span data-toggle="popover" title="Sửa thông tin">
-                      <button className="btn btn-primary btn__edit__icon">
+                      <button
+                        className="btn btn-primary btn__edit__icon"
+                        onClick={() =>
+                          history.push({
+                            pathname: "/admin/quanlykhoahoc/capnhatkhoahoc",
+                            state: { edu },
+                          })
+                        }
+                      >
                         <Icon icon={faEdit} />
                       </button>
                     </span>
                     <span data-toggle="popover" title="Xóa">
-                      <button className="btn btn-danger btn__edit__icon">
+                      <button
+                        className="btn btn-danger btn__edit__icon"
+                        onClick={() => {
+                          if (
+                            window.confirm(
+                              "Bạn có chắc muốn xóa khóa học này không"
+                            )
+                          ) {
+                            dispatch(actXoaKhoaHoc(maKhoaHoc, accessToken));
+                          }
+                        }}
+                      >
                         <Icon icon={faUserSlash} />
                       </button>
                     </span>
