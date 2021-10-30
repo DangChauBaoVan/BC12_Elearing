@@ -136,7 +136,7 @@ export default function GhiDanh(props) {
             </button>
           </div>
           <div className="modal-body">
-            <h2>Học viên đã tham gia khóa học khóa học</h2>
+            <h2>Khóa học chờ ghi danh</h2>
             <table class="table">
               <thead>
                 <tr>
@@ -184,7 +184,7 @@ export default function GhiDanh(props) {
               disabledClassName={"disablePaginate"}
               activeClassName={"activePaginate"}
             />
-            <h2>Học viên chờ xác nhận</h2>
+            <h2>Khóa học đã ghi danh</h2>
             <table class="table">
               <thead>
                 <tr>
