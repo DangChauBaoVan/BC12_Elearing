@@ -58,6 +58,7 @@ export default function ListUser() {
   const xoaNguoiDung = (taiKhoan) => {
     dispatch(actXoaNguoiDung(taiKhoan, accessToken))
   }
+
   return (
     <div>
       <TimNguoiDung searchValue={searchValue} />
@@ -92,7 +93,6 @@ export default function ListUser() {
                       <button
                         data-toggle="modal"
                         data-target="#exampleModalLong"
-                        onClick={updateQuantity()}
                         className="btn btn-info btn__edit__icon"
                       >
                         <Icon icon={faPen} />

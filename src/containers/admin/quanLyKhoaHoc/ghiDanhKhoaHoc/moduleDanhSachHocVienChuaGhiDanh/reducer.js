@@ -1,12 +1,12 @@
-import { DANH_SACH_NGUOI_DUNG_CHUA_DK_S } from "./type";
+import { DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH } from "./type";
 
 const initialState = {
   danhSachChuaDangKiKhoaHoc: [],
 };
 
-export const danhSachChuaDangKiKhoaHoc = (state = initialState, { type, payload }) => {
+export const danhSachChuaGhiDanhKhoaHoc = (state = initialState, { type, payload }) => {
   switch (type) {
-    case DANH_SACH_NGUOI_DUNG_CHUA_DK_S:
+    case DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH:
       return { ...state, danhSachChuaDangKiKhoaHoc: payload };
 
     default:

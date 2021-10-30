@@ -11,7 +11,11 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
 import "./listEdu.scss";
+//action
 import { actXoaKhoaHoc } from "./action";
+import actDanhSachNguoiDungChuaGhiDanh from "../ghiDanhKhoaHoc/moduleDanhSachHocVienChuaGhiDanh/action";
+import { actDanhSachNguoiDungChoGhiDanh } from "../ghiDanhKhoaHoc/moduleDanhSachNguoiDungChoGhiDanh/action";
+import { actDanhSachHocVienDaGhiDanh } from "../ghiDanhKhoaHoc/moduleDanhSachHocVienDaDangKi/action";
 
 export default function ListEdu() {
   const arrEdu = useSelector((state) => state.eduReducer.edu);
@@ -59,6 +63,22 @@ export default function ListEdu() {
     dispatch(actGetAllEdu(e.target.value));
   };
 
+  // set mã khóa học cho act
+  const [maKhoaHoc, setMaKhoaHoc] = useState([]);
+
+  const maKHoaHocChoAct = (maKhoaHoc) => {
+    //act danh sách người dùng chưa đăng ký
+    dispatch(
+      actDanhSachNguoiDungChuaGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken)
+    );
+    //act danh sách người dùng chò xét duyệt
+    dispatch(
+      actDanhSachNguoiDungChoGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken)
+    );
+    // danh sách người dùng đã ghi danh
+    dispatch(actDanhSachHocVienDaGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken))
+    setMaKhoaHoc(maKhoaHoc);
+  };
   return (
     <div>
       <TimKhoaHoc searchValue={searchValue} />
@@ -95,6 +115,7 @@ export default function ListEdu() {
                         data-toggle="modal"
                         data-target="#exampleModalLong"
                         className="btn btn-info btn__edit__icon"
+                        onClick={() => maKHoaHocChoAct(maKhoaHoc)}
                       >
                         <Icon icon={faPen} />
                       </button>
@@ -147,7 +168,7 @@ export default function ListEdu() {
         disabledClassName={"disablePaginate"}
         activeClassName={"activePaginate"}
       />
-      <GhiDanhKhoaHoc />
+      <GhiDanhKhoaHoc maKhoaHoc={maKhoaHoc} />
     </div>
   );
 }

@@ -1,20 +1,19 @@
-import {
-  DANH_SACH_NGUOI_DUNG_CHUA_DK_S,
-} from "./type";
 import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH } from "./type";
 
-//action danh sách người dùng chưa đăng kí (success)
-const actDanhSachNGuoiDungChuaDKS = (data) => ({
-  type: DANH_SACH_NGUOI_DUNG_CHUA_DK_S,
+
+//action danh sách người dùng chưa ghi danh (success)
+const actDanhSachNGuoiDungChuaGhiDanhSuccess = (data) => ({
+  type: DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH,
   payload: data,
 });
 // action danh sách người dùng chưa đăng kí
-export const actDanhSachNguoiDungChuaDK = (maKkhoaHoc, accessToken) => {
+const actDanhSachNguoiDungChuaGhiDanh = (maKkhoaHoc, accessToken) => {
   return (dispatch) => {
     apiNguoiDung
-      .unregisteredListUser(maKkhoaHoc, accessToken)
+      .danhSachNguoiDungChuaGhiDanh(maKkhoaHoc, accessToken)
       .then((res) => {
-        dispatch(actDanhSachNGuoiDungChuaDKS(res.data));
+        dispatch(actDanhSachNGuoiDungChuaGhiDanhSuccess(res.data));
       })
       .catch((err) => {
         console.log(err.response);
@@ -22,3 +21,4 @@ export const actDanhSachNguoiDungChuaDK = (maKkhoaHoc, accessToken) => {
   };
 };
 
+export default actDanhSachNguoiDungChuaGhiDanh

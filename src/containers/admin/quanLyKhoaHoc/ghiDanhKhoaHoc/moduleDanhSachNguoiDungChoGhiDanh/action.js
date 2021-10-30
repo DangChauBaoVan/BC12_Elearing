@@ -10,13 +10,12 @@ const actDanhSachNguoiDungChoGhiDanhSuccess = (data) => ({
 export const actDanhSachNguoiDungChoGhiDanh = (maKkhoaHoc, accessToken) => {
   return (dispatch) => {
     apiNguoiDung
-      .danhSachNguoiDungChoXetDuyet(maKkhoaHoc, accessToken)
+      .danhSachNguoiDungChoDangKy(maKkhoaHoc, accessToken)
       .then((res) => {
-        // console.log('da ghi danh', res.data)
         dispatch(actDanhSachNguoiDungChoGhiDanhSuccess(res.data));
       })
       .catch((err) => {
-        console.log("đa ghi danh", err.response);
+        console.log(err.response);
       });
   };
 };

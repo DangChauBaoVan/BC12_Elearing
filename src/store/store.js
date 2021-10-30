@@ -9,11 +9,21 @@ import eduReducer from "containers/admin/quanLyKhoaHoc/module/eduReducer";
 import loginReducer from "containers/shared/Auth/Login/module/reducer";
 import maDanhMucReducer from "containers/admin/quanLyKhoaHoc/themKhoaHoc/module/reducer";
 
+//ghi danh
+import { danhSachChuaGhiDanhKhoaHoc } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachHocVienChuaGhiDanh/reducer";
+import { danhSachNguoiDungChoGhiDanh } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachNguoiDungChoGhiDanh/reducer";
+import { danhSachHocVienDaGhiDanh } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachHocVienDaDangKi/reducer";
+
 const rootReducer = combineReducers({
   userReducer,
   loginReducer,
   eduReducer,
   maDanhMucReducer,
+  
+  //ghi danh
+  danhSachChuaGhiDanhKhoaHoc,
+  danhSachNguoiDungChoGhiDanh,
+  danhSachHocVienDaGhiDanh,
 });
 
 const persistConfig = {

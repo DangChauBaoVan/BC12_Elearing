@@ -24,4 +24,17 @@ export const apiKhoaHoc = {
     xoaKhoaHoc(maKhoaHoc, accessToken) {
         return callApi(`QuanLyKhoaHoc/XoaKhoaHoc?MaKhoaHoc=${maKhoaHoc}`, "DELETE", maKhoaHoc, accessToken)
     },
+
+    //ghi danh
+    //đăng ký khóa học
+    dangKyKhoaHoc(form, accessToken) {
+        return callApi(`QuanLyKhoaHoc/DangKyKhoaHoc`, "POST", form, accessToken)
+    },
+    //Xác thực người dùng ghi danh vào khóa học đó
+    xacNhanNguoiDung(form, accessToken) {
+        return callApi(`QuanLyKhoaHoc/GhiDanhKhoaHoc`, "POST", form, accessToken)
+    },
+    huyGhiDanh(form, accessToken) {
+        return callApi(`QuanLyKhoaHoc/HuyGhiDanh`, "POST", form, accessToken)
+    }
 }
