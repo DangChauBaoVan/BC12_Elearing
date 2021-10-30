@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { actGetAllUser } from "../module/action";
 import ReactPaginate from "react-paginate";
 import "./listUser.scss";
 import GhiDanh from "../ghiDanh/GhiDanh";
@@ -9,7 +8,12 @@ import TimNguoiDung from "../timNguoiDung/TimNguoiDung";
 //font awesome
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
+
 import { actXoaNguoiDung } from "./action";
+import { actGetAllUser } from "../module/action";
+import { actdanhSachKHoaHocNguoiDungCHuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
+import { actDanhSachKhoaHocChoXacNhan } from "../ghiDanh/moduleDanhSachKhoaHocChoXetDuyet/action";
+import { actDanhSachKhoaHocDaGhiDanh } from "../ghiDanh/modueDanhSachKhoaHocDaDangKy/action";
 
 export default function ListUser() {
   const arrUser = useSelector((state) => state.userReducer.user);
@@ -49,6 +53,7 @@ export default function ListUser() {
     setPageNumber(selected);
   };
 
+  const [taiKhoan, settaiKhoan] = useState()
   // search
   const searchValue = (e) => {
     // console.log(e.target.value);
@@ -59,6 +64,15 @@ export default function ListUser() {
     dispatch(actXoaNguoiDung(taiKhoan, accessToken))
   }
 
+  const onChangeValue = (taiKhoan) => {
+    //lấy danh sách khóa học người dùng chưa đăng ký
+    dispatch(actdanhSachKHoaHocNguoiDungCHuaGhiDanh(taiKhoan, accessToken))
+    //lấy danh sách khóa học chờ xác nhận
+    dispatch(actDanhSachKhoaHocChoXacNhan({taiKhoan:taiKhoan}, accessToken))
+    //lấy danh sách khóa học đã ghi danh
+    dispatch(actDanhSachKhoaHocDaGhiDanh({taiKhoan:taiKhoan}, accessToken))
+    settaiKhoan(taiKhoan)
+  }
   return (
     <div>
       <TimNguoiDung searchValue={searchValue} />
@@ -94,6 +108,7 @@ export default function ListUser() {
                         data-toggle="modal"
                         data-target="#exampleModalLong"
                         className="btn btn-info btn__edit__icon"
+                        onClick={() => onChangeValue(taiKhoan)}
                       >
                         <Icon icon={faPen} />
                       </button>
@@ -132,7 +147,7 @@ export default function ListUser() {
         disabledClassName={"disablePaginate"}
         activeClassName={"activePaginate"}
       />
-      <GhiDanh />
+      <GhiDanh taiKhoan={taiKhoan}/>
     </div>
   );
 }

@@ -1,12 +1,12 @@
 import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
 import { DANH_SACH_KHOA_HOC_NGUOI_DUNG_CHUA_GHI_DANH } from "./type";
 
-const danhSachKHoaHocNguoiDungCHuaGhiDanhSuccess = (data) => ({
+const actdanhSachKHoaHocNguoiDungCHuaGhiDanhSuccess = (data) => ({
   type: DANH_SACH_KHOA_HOC_NGUOI_DUNG_CHUA_GHI_DANH,
   payload: data,
 });
 
-export const danhSachKHoaHocNguoiDungCHuaGhiDanhThanhCong = (
+export const actdanhSachKHoaHocNguoiDungCHuaGhiDanh = (
   taiKhoan,
   accessToken
 ) => {
@@ -14,7 +14,7 @@ export const danhSachKHoaHocNguoiDungCHuaGhiDanhThanhCong = (
     apiNguoiDung
       .danhSachKhoaHocNguoiDungChuaGhiDanh(taiKhoan, accessToken)
       .then((res) => {
-        dispatch(danhSachKHoaHocNguoiDungCHuaGhiDanhSuccess(res.data));
+        dispatch(actdanhSachKHoaHocNguoiDungCHuaGhiDanhSuccess(res.data));
       })
       .then((err) => {
         console.log(err);

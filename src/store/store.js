@@ -13,17 +13,23 @@ import maDanhMucReducer from "containers/admin/quanLyKhoaHoc/themKhoaHoc/module/
 import { danhSachChuaGhiDanhKhoaHoc } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachHocVienChuaGhiDanh/reducer";
 import { danhSachNguoiDungChoGhiDanh } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachNguoiDungChoGhiDanh/reducer";
 import { danhSachHocVienDaGhiDanh } from "containers/admin/quanLyKhoaHoc/ghiDanhKhoaHoc/moduleDanhSachHocVienDaDangKi/reducer";
+import { danhSachKHoaHocNguoiDungChuaGhiDanhReducer } from "containers/admin/quanLyNguoiDung/ghiDanh/moduleDanhSachKhoaHocChuaDangKi/reducer";
+import { danhSachKhoaHocChoXacNhan } from "containers/admin/quanLyNguoiDung/ghiDanh/moduleDanhSachKhoaHocChoXetDuyet/reducer";
+import { danhSachKhoaHocDaGhiDanh } from "containers/admin/quanLyNguoiDung/ghiDanh/modueDanhSachKhoaHocDaDangKy/reducer";
 
 const rootReducer = combineReducers({
   userReducer,
   loginReducer,
   eduReducer,
   maDanhMucReducer,
-  
+
   //ghi danh
   danhSachChuaGhiDanhKhoaHoc,
   danhSachNguoiDungChoGhiDanh,
   danhSachHocVienDaGhiDanh,
+  danhSachKHoaHocNguoiDungChuaGhiDanhReducer,
+  danhSachKhoaHocChoXacNhan,
+  danhSachKhoaHocDaGhiDanh
 });
 
 const persistConfig = {

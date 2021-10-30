@@ -30,5 +30,17 @@ export const apiNguoiDung = {
     //Lấy danh sách người dùng đã ghi danh vào khóa học đó
     danhSachNguoiDungDaGhiDanh(maKhoaHoc, accessToken) {
         return callApi(`QuanLyNguoiDung/LayDanhSachHocVienKhoaHoc`, "POST", maKhoaHoc, accessToken)
+    },
+    //Lấy danh sách khóa học mà người dùng đó chưa ghi danh
+    danhSachKhoaHocNguoiDungChuaGhiDanh(taiKhoan, accessToken) {
+        return callApi(`QuanLyNguoiDung/LayDanhSachKhoaHocChuaGhiDanh?TaiKhoan=${taiKhoan}`, "POST", taiKhoan, accessToken)
+    },
+    //Lấy danh sách khóa học mà người dùng đó chờ xét duyệt
+    danhSachKhoaHocNguoiDungChoXetDuyet(taiKhoan, accessToken) {
+        return callApi(`QuanLyNguoiDung/LayDanhSachKhoaHocChoXetDuyet`, "POST", taiKhoan, accessToken)
+    },
+    //Lấy danh sách khóa học mà người dùng đó đã ghi danh
+    danhSachKhoaHocNguoiDungDaGhiDanh(taiKhoan, accessToken) {
+        return callApi(`QuanLyNguoiDung/LayDanhSachKhoaHocDaXetDuyet`, "POST", taiKhoan, accessToken)
     }
 }

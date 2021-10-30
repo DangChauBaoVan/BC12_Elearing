@@ -9,12 +9,12 @@ const actDanhSachKhoaHocChoXacNhanSuccess = taiKhoan => ({
 export const actDanhSachKhoaHocChoXacNhan = (taiKhoan, accessToken) => {
   return (dispatch) => {
     apiNguoiDung
-      .danhSachKhoaHocChoXetDuyet(taiKhoan, accessToken)
+      .danhSachKhoaHocNguoiDungChoXetDuyet(taiKhoan, accessToken)
       .then((res) => {
         dispatch(actDanhSachKhoaHocChoXacNhanSuccess(res.data))
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response?.data);
       });
   };
 };
