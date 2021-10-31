@@ -17,7 +17,10 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { actLogOut } from "containers/shared/Auth/Login/module/action";
 import { Link } from "react-router-dom";
-
+import { actLayDanhMucKhoaHoc } from "./module/action";
+import { useEffect } from "react";
+import { useFormik } from "formik";
+import { useHistory } from "react-router-dom";
 const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.toggle("active");
@@ -28,10 +31,26 @@ const clickSearch = () => {
 };
 export default function Header() {
   const { currentUser } = useSelector((state) => state.loginReducer);
+  const {danhMucKhoaHoc} = useSelector((state) => state.headerReducer)
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(actLogOut());
   }
+  useEffect(() => {
+    dispatch(actLayDanhMucKhoaHoc());
+  }, []);
+  
+  const formik = useFormik({
+    initialValues: {
+      searchValue:""
+    },
+    onSubmit: (values) => {
+      console.log("values: ", values);
+      history.push(`/searchResult/${values.searchValue}`);
+      
+    },
+  });
   return (
     <div>
       <header className="header">
@@ -39,10 +58,15 @@ export default function Header() {
           <a href="#" className="logo">
             <Icon icon={faBookOpen} /> <i className="" /> E-Learning{" "}
           </a>
-          <form className="search-form">
+          <form className="search-form" onSubmit={(event) => {
+          event.preventDefault();
+          formik.handleSubmit(event);
+          
+        }}>
             <input
               type="search"
-              name
+              name="searchValue"
+              onChange={formik.handleChange}
               placeholder="Tìm khóa học"
               id="search-box"
             />
@@ -117,11 +141,14 @@ export default function Header() {
             </a>
             <div className="categoryContent">
               <nav id="categoryNavbar">
-                <a href="#home">Trang Chủ</a>
+                {danhMucKhoaHoc.map((dmkh,index)=>
+                  (<a href="#" key={index}>{dmkh.tenDanhMuc}</a>)
+                )}
+                {/* <a href="#home">Trang Chủ</a>
                 <a href="#featured">Danh Mục</a>
 
                 <a href="#reviews">Đánh Giá</a>
-                <a href="#arrivals">Liên Hệ</a>
+                <a href="#arrivals">Liên Hệ</a> */}
               </nav>
             </div>
 

@@ -4,9 +4,12 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
 import loginReducer from 'containers/shared/Auth/Login/module/reducer';
-
+import headerReducer from 'components/Header/module/reducer';
+import courseListReducer from 'containers/client/CourseList/module/reducer';
 const rootReducer = combineReducers({
-    loginReducer
+    loginReducer,
+    headerReducer,
+    courseListReducer
 })
 
 const persistConfig = {

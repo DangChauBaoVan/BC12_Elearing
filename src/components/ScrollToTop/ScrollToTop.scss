@@ -1,0 +1,12 @@
+.backToTop {
+  position: fixed;
+  top: calc(100% - 12rem);
+  right: 2rem;
+  padding: 0.3rem 1.85rem;
+  font-size: 4rem;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 0.5rem;
+  transition: 1s linear;
+  z-index: 1000;
+}
