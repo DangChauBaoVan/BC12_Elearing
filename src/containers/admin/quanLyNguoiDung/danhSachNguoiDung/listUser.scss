@@ -1,0 +1,41 @@
+.paginateBttn {
+  width: 80%;
+  height: 40%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 30px;
+  a {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ffa000;
+    color: #c67100;
+    transition: 300ms all ease;
+    &:hover {
+      color: black;
+      background-color: #ffd149;
+    }
+  }
+  .activePaginate a {
+    background-color: #ffd149;
+  }
+  .disablePaginate a {
+    background-color: silver;
+    border: silver;
+    color: slategray;
+    cursor: no-drop;
+  }
+}
+
+.btn__edit__icon {
+  width: 19px;
+  padding-left: 13px;
+  margin: auto;
+}
+
+.border__table {
+  border: slategray solid 1px;
+   height: 34rem
+}

@@ -12,6 +12,7 @@ import {
   faComment,
   faBlog,
 } from "@fortawesome/free-solid-svg-icons";
+
 import Login from "containers/shared/Auth/Login/Login";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -36,6 +37,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(actLogOut());
+
   }
   useEffect(() => {
     dispatch(actLayDanhMucKhoaHoc());
@@ -51,12 +53,13 @@ export default function Header() {
       
     },
   });
+
   return (
     <div>
       <header className="header">
         <div className="header-1">
           <a href="#" className="logo">
-            <Icon icon={faBookOpen} /> <i className="" /> E-Learning{" "}
+            <Icon icon={faBookOpen} /> <i className="" /> E-Learning
           </a>
           <form className="search-form" onSubmit={(event) => {
           event.preventDefault();
@@ -112,7 +115,11 @@ export default function Header() {
                   <div class="dropdown-divider"></div>
                   {currentUser.maLoaiNguoiDung === "GV" ? (
                     <>
-                      <Link to="/admin" className="dropdown-item" type="button">
+                      <Link
+                        to="/admin/quanlykhoahoc"
+                        className="dropdown-item"
+                        type="button"
+                      >
                         Admin
                       </Link>
                       <div class="dropdown-divider"></div>
@@ -120,14 +127,22 @@ export default function Header() {
                   ) : (
                     <></>
                   )}
-
-                  <a className="dropdown-item" type="button" onClick={handleLogOut}>
+                  <a
+                    className="dropdown-item"
+                    type="button"
+                    onClick={handleLogOut}
+                  >
                     Thoát
                   </a>
                 </div>
               </a>
             ) : (
-              <a id="login-btn" className="fas fa-user" onClick={handleOnClick} style={{fontSize:"2.5rem"}}>
+              <a
+                id="login-btn"
+                className="fas fa-user"
+                onClick={handleOnClick}
+                style={{ fontSize: "2.5rem" }}
+              >
                 <Icon icon={faUser} className="faEditIcon" />
               </a>
             )}

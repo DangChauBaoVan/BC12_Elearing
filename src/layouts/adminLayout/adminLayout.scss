@@ -1,0 +1,44 @@
+$color-1: #c67100;
+$color-2: #ffd149;
+$color-3: #ffa000;
+$color-black: black;
+
+.ant-layout-sider {
+  background-color: $color-3;
+  .ant-menu.ant-menu-dark {
+    background-color: $color-3;
+    &:not(.ant-menu-horizontal) {
+      .ant-menu-item-selected {
+        background-color: $color-2;
+      }
+    }
+  }
+}
+.ant-layout-header {
+  background: $color-1;
+  padding: 0;
+  .thong__tin__admin {
+    float: right;
+    padding-right: 60px;
+    display: flex;
+    .drop__admin {
+      .drop__menu {
+        margin-left: -85px;
+        .drop__item {
+          height: 25px;
+          line-height: 25px;
+        }
+      }
+    }
+  }
+}
+
+.admin__content {
+  margin: 24px 16px 0;
+  overflow: initial;
+  .ite-layout-background {
+    padding: 24px;
+    text-align: center;
+    height: 100%;
+  }
+}
