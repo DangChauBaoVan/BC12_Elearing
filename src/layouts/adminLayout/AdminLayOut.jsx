@@ -48,7 +48,7 @@ function AdminLayout({ children }) {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
+      <Layout className="site-layout" style={{ marginLeft: 200, height:"100vh" }}>
         <Header className="site-layout-background">
           <div className="thong__tin__admin">
             <p>Chào! {hoTen} </p>
