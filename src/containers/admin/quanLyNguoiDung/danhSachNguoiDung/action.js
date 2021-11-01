@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
 import { actGetAllUser } from "../module/action";
 
 export const actXoaNguoiDung = (taiKhoan, accessToken) => {

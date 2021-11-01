@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
 import { DANH_SACH_NGUOI_DUNG_DA_GHI_DANH } from "./type";
 
 //action danh sách người dùng chờ xét duyệt (success)

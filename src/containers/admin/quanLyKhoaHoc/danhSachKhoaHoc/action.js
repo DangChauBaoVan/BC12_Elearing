@@ -1,4 +1,4 @@
-import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
+import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
 import { actGetAllEdu } from "../module/action";
 
 export const actXoaKhoaHoc = (maKhoaHoc, accessToken) => {

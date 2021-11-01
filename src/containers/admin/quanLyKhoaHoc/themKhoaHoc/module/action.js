@@ -1,4 +1,4 @@
-import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
+import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
 
 import {
   GET_MA_KHOA_HOC_SUCCESS,

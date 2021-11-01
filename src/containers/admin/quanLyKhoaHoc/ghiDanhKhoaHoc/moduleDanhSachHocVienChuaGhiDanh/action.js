@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
 import { DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH } from "./type";
 
 

@@ -1,4 +1,4 @@
-import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
+import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
 
 export const actCapNhatKhoaHoc = (form, history) => {
   return (dispatch) => {

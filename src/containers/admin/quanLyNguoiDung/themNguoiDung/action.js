@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
 
 export const actThemNguoiDung = (form, accessToken, history) => {
   return (dispatch) => {

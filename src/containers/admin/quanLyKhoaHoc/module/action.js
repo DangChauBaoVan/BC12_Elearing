@@ -1,4 +1,4 @@
-import { apiKhoaHoc } from "assets/apiKhoaHoc/apiKhoaHoc";
+import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
 import {
   GET_ALL_EDU_REQUEST,
   GET_ALL_EDU_SUCCESS,

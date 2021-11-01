@@ -58,7 +58,7 @@ export default function GhiDanhKhoaHoc(props) {
   const [pageNumberTwo, setPageNumberTwo] = useState(0);
   const userPerPageTwo = 3;
   const pagesVisitedTwo = pageNumberTwo * userPerPageTwo;
-  const pageCountTwo = Math.ceil(nguoiDungDaGhiDanh.length / userPerPageTwo);
+  const pageCountTwo = Math.ceil(danhSachHocVienDaGhiDanh.length / userPerPageTwo);
   const changePageTwo = ({ selected }) => {
     setPageNumberTwo(selected);
   };
