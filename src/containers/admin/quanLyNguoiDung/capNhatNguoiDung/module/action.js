@@ -1,9 +1,9 @@
-import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
+import quanLyNguoiDungApi from "apis/QuanLyNguoiDung";
 
 
 export const actCapNhatNguoiDung = (form, accessToken, history) => {
   return (dispatch) => {
-    apiNguoiDung.capNhatNguoiDung(form, accessToken)
+    quanLyNguoiDungApi.capNhatNguoiDung(form, accessToken)
       .then((res) => {
         // console.log(res.data)
         alert('cập nhật thành công')

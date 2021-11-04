@@ -11,7 +11,7 @@ import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
 import { actXoaNguoiDung } from "./action";
 import { actGetAllUser } from "../module/action";
-import { actdanhSachKHoaHocNguoiDungCHuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
+import { actdanhSachKHoaHocNguoiDungChuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
 import { actDanhSachKhoaHocChoXacNhan } from "../ghiDanh/moduleDanhSachKhoaHocChoXetDuyet/action";
 import { actDanhSachKhoaHocDaGhiDanh } from "../ghiDanh/modueDanhSachKhoaHocDaDangKy/action";
 
@@ -66,7 +66,7 @@ export default function ListUser() {
 
   const onChangeValue = (taiKhoan) => {
     //lấy danh sách khóa học người dùng chưa đăng ký
-    dispatch(actdanhSachKHoaHocNguoiDungCHuaGhiDanh(taiKhoan, accessToken))
+    dispatch(actdanhSachKHoaHocNguoiDungChuaGhiDanh(taiKhoan, accessToken))
     //lấy danh sách khóa học chờ xác nhận
     dispatch(actDanhSachKhoaHocChoXacNhan({taiKhoan:taiKhoan}, accessToken))
     //lấy danh sách khóa học đã ghi danh
