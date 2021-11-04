@@ -6,6 +6,8 @@
   --border: 0.1rem solid rgba(0, 0, 0, 0.1);
   --border-hover: 0.1rem solid var(--black);
   --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  --gradient:linear-gradient(90deg, #f1c40f, #f39c12);
+  --gradient2:linear-gradient(90deg, #ffd149, #c67100);
 }
 * {
   margin: 0;
@@ -24,34 +26,24 @@ html {
   scroll-behavior: smooth;
 }
 
-html::-webkit-scrollbar {
-  width: 1rem;
+html::-webkit-scrollbar{
+  width:1.5rem;
 }
 
-html::-webkit-scrollbar-track {
-  background: transparent;
+html::-webkit-scrollbar-track{
+  background:#333;
 }
 
-html::-webkit-scrollbar-thumb {
-  background: var(--black);
+html::-webkit-scrollbar-thumb{
+  background:linear-gradient(#f1c40f, #f39c12);
 }
-.heading {
-  text-align: center;
-  margin-bottom: 2rem;
-  position: relative;
+.heading{
+  color:#444;
+  padding:1rem;
+  font-size: 3rem;
+  text-align: left;
 }
 
-.heading::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 0.01rem;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: -1;
-}
 
 .heading span {
   font-size: 3rem;
@@ -251,6 +243,7 @@ html::-webkit-scrollbar-thumb {
 
 
 /* media queries  */
+
 
 @media (max-width:991px){
 
