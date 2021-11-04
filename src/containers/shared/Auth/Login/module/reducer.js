@@ -1,7 +1,7 @@
 import { LOGIN_SUCCESS,LOGIN_FAILED, LOGOUT } from "./type";
 
 const initialState = {
-    currentUser:null,
+    currentUser: [],
     error:""
 }
 

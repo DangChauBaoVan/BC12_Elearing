@@ -11,17 +11,24 @@ export default function CapNhatNguoiDung(props) {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { email, hoTen, maLoaiNguoiDung, matKhau, soDt,taiKhoan } =
+  const { email, hoTen, maLoaiNguoiDung, matKhau, soDt, soDT, taiKhoan } =
     props.location.state.user;
 
-    // // FORM
+  const soDtt = () => {
+    if (soDt) {
+      return soDt;
+    }
+    return soDT;
+  };
+
+  // FORM
   const [form, setForm] = useState({
     maNhom: "GP11",
     email,
     hoTen,
     maLoaiNguoiDung,
     matKhau,
-    soDt,
+    soDt: soDtt(),
     taiKhoan,
   });
 
@@ -62,7 +69,6 @@ export default function CapNhatNguoiDung(props) {
               type="text"
               className="form-control"
               name="taiKhoan"
-              // onClick={onChangeForm()}
               onChange={onChange}
               value={form.taiKhoan}
             />
@@ -105,7 +111,7 @@ export default function CapNhatNguoiDung(props) {
           <div className="form-group">
             <h3 htmlFor="exampleInputPassword1">Số điện thoại</h3>
             <input
-              type="number"
+              type="tel"
               className="form-control"
               name="soDt"
               onChange={onChange}

@@ -27,19 +27,13 @@ export default function CapNhatKhoaHoc(props) {
     ngayTao,
     danhMucKhoaHoc,
     nguoiTao,
-    biDanh,
-    danhGia,
-    luotXem,
   } = props.location.state.edu;
 
   const [form, setForm] = useState({
     maKhoaHoc,
     tenKhoaHoc,
-    biDanh,
     moTa,
-    luotXem,
-    danhGia: danhGia,
-    hinhAnh,
+    hinhAnh: null,
     maNhom: "GP11",
     ngayTao,
     maDanhMucKhoaHoc: danhMucKhoaHoc.maDanhMucKhoahoc,
@@ -70,7 +64,6 @@ export default function CapNhatKhoaHoc(props) {
   //custom image
   const handleImage = (e) => {
     const img = e.target.files[0];
-    // console.log(img);
     //set hinhAnh vào form
     setForm((prevState) => ({
       ...prevState,
@@ -92,7 +85,6 @@ export default function CapNhatKhoaHoc(props) {
   //custom maDanhMucKhoaHoc
   const handleSel = (e) => {
     let value = e.target.value;
-    // console.log(value);
     setForm((prevState) => ({
       ...prevState,
       maDanhMucKhoaHoc: value,
@@ -103,10 +95,12 @@ export default function CapNhatKhoaHoc(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     let formData = new FormData();
+
     for (let key in form) {
+      console.log(key, form[key]);
       formData.append(key, form[key]);
     }
-    // console.log(formData.get("File"));
+
     dispatch(actCapNhatKhoaHoc(formData, history));
   };
 
@@ -175,7 +169,7 @@ export default function CapNhatKhoaHoc(props) {
                 <input
                   type="file"
                   className="form-control"
-                  accept=".png, .jpg, .jpeg"
+                  accept="image/.jpeg, image/.jpg,"
                   name="hinhAnh"
                   onChange={handleImage}
                 />

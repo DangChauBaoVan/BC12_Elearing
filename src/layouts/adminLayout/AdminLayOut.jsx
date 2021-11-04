@@ -11,18 +11,25 @@ import { actLogOut } from "containers/shared/Auth/Login/module/action";
 const { Header, Content, Sider } = Layout;
 
 function AdminLayout({ children }) {
-  const { hoTen, maLoaiNguoiDung } = useSelector(
-    (state) => state.loginReducer.currentUser
-  );
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const currentUser = useSelector((state) => state.loginReducer.currentUser);
+  const arrUser = useSelector((state) => state.userReducer.user);
+  const { hoTen, maLoaiNguoiDung } = currentUser;
+
+  if (currentUser === null || maLoaiNguoiDung === "HV") {
+    return <Redirect to="/" />;
+  }
+
+  const user = arrUser.filter((user) => {
+    if (user.hoTen == hoTen) return user;
+  });
+
   const handleOut = () => {
     dispatch(actLogOut());
     history.push("/");
   };
-  if (maLoaiNguoiDung === "HV") {
-    return <Redirect to="/" />;
-  }
 
   return (
     <Layout color={"#ffa940"}>
@@ -48,7 +55,10 @@ function AdminLayout({ children }) {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200, height:"100vh" }}>
+      <Layout
+        className="site-layout"
+        style={{ marginLeft: 200, height: "100vh" }}
+      >
         <Header className="site-layout-background">
           <div className="thong__tin__admin">
             <p>Chào! {hoTen} </p>
@@ -64,11 +74,25 @@ function AdminLayout({ children }) {
                 className="dropdown-menu drop__menu"
                 aria-labelledby="dropdownMenuButton"
               >
-                <a className="dropdown-item drop__item">
+                <a
+                  className="dropdown-item drop__item"
+                  onClick={() =>
+                    history.push({
+                      pathname: "/admin/quanlynguoidung/capnhatnguoidung",
+                      state: { user: user[0] },
+                    })
+                  }
+                >
                   Cập nhật thông tin
                 </a>
+                <a
+                  className="dropdown-item drop__item"
+                  onClick={() => history.push("/")}
+                >
+                  Trở về
+                </a>
                 <a className="dropdown-item drop__item" onClick={handleOut}>
-                  LogOut
+                  Logout
                 </a>
               </span>
             </div>

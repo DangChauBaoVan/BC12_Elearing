@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactPaginate from "react-paginate";
 
@@ -182,7 +181,7 @@ export default function GhiDanhKhoaHoc(props) {
               disabledClassName={"disablePaginate"}
               activeClassName={"activePaginate"}
             />
-            <h2>Học viên đã tham gia khóa học khóa học</h2>
+            <h2>Học viên đã tham gia khóa học</h2>
             <table class="table">
               <thead>
                 <tr>

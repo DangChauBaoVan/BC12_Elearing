@@ -44,6 +44,7 @@ export default function ThemKhoaHoc() {
     });
 
     //tạo đối tượng đọc file
+    if (!file) return;
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = (e) => {
@@ -74,7 +75,8 @@ export default function ThemKhoaHoc() {
 
     const newForm = new FormData();
 
-    for (const key in form) {
+    for (let key in form) {
+      console.log(key, form[key])
       newForm.append(key, form[key]);
     }
 
@@ -141,6 +143,7 @@ export default function ThemKhoaHoc() {
                 <h3 htmlFor="exampleInputPassword1">Hình ảnh</h3>
                 <input
                   type="file"
+                  accept="image/.jpg, image/.jpeg"
                   className="form-control"
                   onChange={onChangeImage}
                 />
