@@ -16,9 +16,14 @@ function AdminLayout({ children }) {
 
   const currentUser = useSelector((state) => state.loginReducer.currentUser);
   const arrUser = useSelector((state) => state.userReducer.user);
+
+  if (currentUser === null) {
+    return <Redirect to="/" />;
+  }
+
   const { hoTen, maLoaiNguoiDung } = currentUser;
 
-  if (currentUser === null || maLoaiNguoiDung === "HV") {
+  if (maLoaiNguoiDung === "HV") {
     return <Redirect to="/" />;
   }
 
