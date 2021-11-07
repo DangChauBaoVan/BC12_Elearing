@@ -4,6 +4,14 @@ import { Link, NavLink, Redirect, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 //scss
 import "./adminLayout.scss";
+//font awesome
+import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
+import {
+  faEdit,
+  faHome,
+  faSignOutAlt,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 //ant design
 import { Layout, Menu } from "antd";
 import { AppstoreOutlined, TeamOutlined } from "@ant-design/icons";
@@ -15,21 +23,16 @@ function AdminLayout({ children }) {
   const history = useHistory();
 
   const currentUser = useSelector((state) => state.loginReducer.currentUser);
-  const arrUser = useSelector((state) => state.userReducer.user);
 
   if (currentUser === null) {
     return <Redirect to="/" />;
   }
 
-  const { hoTen, maLoaiNguoiDung } = currentUser;
+  const { maLoaiNguoiDung } = currentUser;
 
   if (maLoaiNguoiDung === "HV") {
     return <Redirect to="/" />;
   }
-
-  const user = arrUser.filter((user) => {
-    if (user.hoTen == hoTen) return user;
-  });
 
   const handleOut = () => {
     dispatch(actLogOut());
@@ -66,38 +69,26 @@ function AdminLayout({ children }) {
       >
         <Header className="site-layout-background">
           <div className="thong__tin__admin">
-            <p>Chào! {hoTen} </p>
             <div className="dropdown drop__admin">
-              <span
-                className="dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style={{ fontSize: "3rem" }}
-              ></span>
-              <span
-                className="dropdown-menu drop__menu"
-                aria-labelledby="dropdownMenuButton"
-              >
+              <span className="dropdown__toggle" data-toggle="dropdown">
+                <Icon icon={faBars} />
+              </span>
+              <span className="dropdown-menu drop__menu">
                 <a
                   className="dropdown-item drop__item"
-                  onClick={() =>
-                    history.push({
-                      pathname: "/admin/quanlynguoidung/capnhatnguoidung",
-                      state: { user: user[0] },
-                    })
-                  }
-                >
-                  Cập nhật thông tin
-                </a>
-                <a
-                  className="dropdown-item drop__item"
+                  data-toggle="popover"
+                  title="home"
                   onClick={() => history.push("/")}
                 >
-                  Trở về
+                  <Icon icon={faHome} />
                 </a>
-                <a className="dropdown-item drop__item" onClick={handleOut}>
-                  Logout
+                <a
+                  className="dropdown-item drop__item"
+                  data-toggle="popover"
+                  title="Sign out"
+                  onClick={handleOut}
+                >
+                  <Icon icon={faSignOutAlt} />
                 </a>
               </span>
             </div>

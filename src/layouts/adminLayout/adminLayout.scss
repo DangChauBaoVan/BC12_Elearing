@@ -22,13 +22,36 @@ $color-black: black;
     padding-right: 60px;
     display: flex;
     .drop__admin {
+      margin: 1rem;
       .drop__menu {
-        margin-left: -85px;
+        transform: translate3d(-116px, 62px, 0px) !important;
+        top: -10px;
         .drop__item {
-          height: 25px;
+          height: 33px;
           line-height: 25px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #5e5e5e;
         }
       }
+      .dropdown__toggle {
+        svg {
+          color: $color-2;
+          font-size: 3rem;
+        }
+        &::after {
+          content: "";
+          border: none;
+        }
+      }
+      .show {
+        display: flex;
+        background-color: #ffffff00;
+      }
+    }
+    .dropdown-menu {
+      top: 0;
+      transition: .1s all ease;
     }
   }
 }

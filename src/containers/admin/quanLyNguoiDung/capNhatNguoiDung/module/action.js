@@ -10,6 +10,7 @@ export const actCapNhatNguoiDung = (form, accessToken, history) => {
         history.push('/admin/quanlynguoidung')
       })
       .catch((err) => {
+        alert("cập nhật thông tin thất bại")
         console.log(err.response);
       });
   };

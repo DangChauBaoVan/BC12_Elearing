@@ -105,7 +105,7 @@ export default function ListEdu() {
                   <td>{maKhoaHoc}</td>
                   <td>{tenKhoaHoc}</td>
                   <td>
-                    <img width="60px" src={hinhAnh} alt="..." />
+                    <img style={{width:"60px", height:"30px"}} src={hinhAnh} alt="..." />
                   </td>
                   <td>{luotXem}</td>
                   <td>{hoTen}</td>

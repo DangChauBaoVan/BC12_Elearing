@@ -8,7 +8,7 @@ import TimNguoiDung from "../timNguoiDung/TimNguoiDung";
 //font awesome
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
-
+//action
 import { actXoaNguoiDung } from "./action";
 import { actGetAllUser } from "../module/action";
 import { actdanhSachKHoaHocNguoiDungChuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
@@ -99,7 +99,7 @@ export default function ListUser() {
                   <td>{quantity + 1}</td>
                   <td>{taiKhoan}</td>
                   <td>{matKhau}</td>
-                  <td>{hoTen}</td>
+                  <td style={{ textTransform: "none" }}>{hoTen}</td>
                   <td>{email}</td>
                   <td>{soDt}</td>
                   <td>

@@ -5,6 +5,30 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 import { actMaDanhMuc, actThemKhoaHoc } from "./module/action";
 
+// sử lý form
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+// tạo một validation schema với yup
+const schema = yup.object().shape({
+  maKhoaHoc: yup
+    .string()
+    .required("Vui lòng nhập mã nhóm")
+    .min(2, "mã nhóm nhỏ nhất 5 ký tự")
+    .max(8, "mã nhóm tối đa 8 ký tự"),
+  tenKhoaHoc: yup
+    .string()
+    .required("Vui lòng nhập tên khóa học")
+    .min(6, "tên khóa học nhỏ nhất 6 ký tự")
+    .max(20, "tên khóa học tối đa 20 ký tự"),
+  ngayTao: yup.string().required("Vui lòng chọn ngày tạo"),
+  moTa: yup
+    .string()
+    .required("Vui lòng nhập mô tả")
+    .min(10, "mô tả ít nhất 10 ký tự"),
+});
+
 export default function ThemKhoaHoc() {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -21,72 +45,52 @@ export default function ThemKhoaHoc() {
     (state) => state.loginReducer.currentUser.taiKhoan
   );
 
-  //form khóa học mới
-  const [form, setform] = useState();
+  //custom hình hiển thị
+  const [img, setimg] = useState({});
 
-  //set value mã khóa học
-  const onChangeSel = (e) => {
-    setform({
-      ...form,
-      maDanhMucKhoaHoc: e.target.value,
-    });
-  };
+  //custom image
+  const handleImage = (e) => {
+    const img = e.target.files[0];
 
-  //set value image
-  //hình được hiển thị
-  const [img, setimg] = useState("");
+    //show ảnh khi được chọn
+    // if (img) return;
 
-  const onChangeImage = (e) => {
-    const file = e.target.files[0];
-    setform({
-      ...form,
-      hinhAnh: file,
-    });
-
-    //tạo đối tượng đọc file
-    if (!file) return;
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = (e) => {
+    let render = new FileReader();
+    render.readAsDataURL(e.target.files[0]);
+    setimg(render.result);
+    render.onload = function (e) {
       setimg(e.target.result);
     };
+    setimg(e.target);
   };
 
-  //set ngày tạo
-  const onChangeDate = (e) => {
-    setform({
-      ...form,
-      ngayTao: moment(e.target.value).format("DD/MM/YYYY"),
-    });
-  };
-
-  const onChangeForm = (e) => {
-    const { name, value } = e.target;
-    setform((form) => ({
-      ...form,
-      [name]: value,
-      maNhom: "GP11",
-      taiKhoanNguoiTao: taiKhoan,
-    }));
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(schema) });
 
   const submitForm = (e) => {
-    e.preventDefault();
+    const form = {
+      ...e,
+      taiKhoanNguoiTao: taiKhoan,
+      hinhAnh: e.hinhAnh[0],
+      maNhom: "GP01",
+      ngayTao: moment(e.ngayTao).format("DD/MM/YYYY"),
+    };
 
     const newForm = new FormData();
-
     for (let key in form) {
-      console.log(key, form[key])
+      console.log(key, form[key]);
       newForm.append(key, form[key]);
     }
-
     dispatch(actThemKhoaHoc(newForm, history));
   };
 
   return (
     <div className="text-left">
       <h1>THÊM KHÓA HỌC</h1>
-      <form className="row" onSubmit={submitForm}>
+      <form className="row" onSubmit={handleSubmit(submitForm)}>
         <div className="col-6">
           <div className="form-group">
             <h3>Mã khóa học</h3>
@@ -94,24 +98,30 @@ export default function ThemKhoaHoc() {
               type="text"
               className="form-control"
               name="maKhoaHoc"
-              onChange={onChangeForm}
+              {...register("maKhoaHoc")}
             />
+            <p className="text-danger" style={{ textTransform: "none" }}>
+              {errors.maKhoaHoc?.message}
+            </p>
           </div>
           <div className="form-group">
             <h3>Tên khóa học</h3>
             <input
               type="text"
+              minLength={2}
+              maxLength={50}
               className="form-control"
               name="tenKhoaHoc"
-              onChange={onChangeForm}
+              {...register("tenKhoaHoc")}
             />
+            <p className="text-danger" style={{ textTransform: "none" }}>
+              {errors.tenKhoaHoc?.message}
+            </p>
           </div>
           <div className="form-group">
             <h3>Danh mục khóa học</h3>
-            <select class="form-control" onChange={onChangeSel}>
-              <option disabled selected>
-                --select--
-              </option>
+            <select class="form-control" {...register("maDanhMucKhoaHoc")}>
+              <option disabled>--select--</option>
               {maDanhMucKhoaHoc.map((danhMuc) => {
                 const { maDanhMuc, tenDanhMuc } = danhMuc;
                 return <option value={maDanhMuc}>{tenDanhMuc}</option>;
@@ -123,8 +133,11 @@ export default function ThemKhoaHoc() {
             <input
               type="date"
               className="form-control"
-              onChange={onChangeDate}
+              {...register("ngayTao")}
             />
+            <p className="text-danger" style={{ textTransform: "none" }}>
+              {errors.ngayTao?.message}
+            </p>
           </div>
         </div>
         <div className="col-6">
@@ -145,8 +158,12 @@ export default function ThemKhoaHoc() {
                   type="file"
                   accept="image/.jpg, image/.jpeg"
                   className="form-control"
-                  onChange={onChangeImage}
+                  onChangeCapture={handleImage}
+                  {...register("hinhAnh")}
                 />
+                <p className="text-danger" style={{ textTransform: "none" }}>
+                  {errors.hinhAnh?.message}
+                </p>
               </div>
             </div>
             <div className="col-6">
@@ -162,12 +179,13 @@ export default function ThemKhoaHoc() {
             <textarea
               style={{ height: "112px" }}
               className="form-control"
-              id="exampleFormControlTextarea1"
-              rows={3}
-              defaultValue={""}
-              onChange={onChangeForm}
-              name="moTa"
+              // onChange={onChangeForm}
+              // name="moTa"
+              {...register("moTa")}
             />
+            <p className="text-danger" style={{ textTransform: "none" }}>
+              {errors.moTa?.message}
+            </p>
           </div>
         </div>
         <Link to="/admin/quanlyKhoaHoc" className="themNguoiDungLinkHome">
