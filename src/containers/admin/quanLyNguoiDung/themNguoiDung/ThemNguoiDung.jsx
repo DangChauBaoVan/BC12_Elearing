@@ -116,7 +116,7 @@ export default function ThemNguoiDung() {
           </div>
           <div className="form-group">
             <h3>Số điện thoại</h3>
-            <input type="tel" className="form-control" {...register("soDt")} />
+            <input type="number" className="form-control" {...register("soDt")} />
             {errors.soDt && (
               <p className="text-danger" style={{ textTransform: "none" }}>
                 {errors.soDt?.message}

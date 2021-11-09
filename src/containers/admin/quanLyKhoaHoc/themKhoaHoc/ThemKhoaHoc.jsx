@@ -14,15 +14,19 @@ import * as yup from "yup";
 const schema = yup.object().shape({
   maKhoaHoc: yup
     .string()
-    .required("Vui lòng nhập mã nhóm")
-    .min(2, "mã nhóm nhỏ nhất 5 ký tự")
+    .required("vui lòng nhập mã nhóm")
+    .min(2, "mã nhóm nhỏ nhất 2 ký tự")
     .max(8, "mã nhóm tối đa 8 ký tự"),
   tenKhoaHoc: yup
     .string()
-    .required("Vui lòng nhập tên khóa học")
+    .required("vui lòng nhập tên khóa học")
     .min(4, "tên khóa học nhỏ nhất 4 ký tự")
-    .max(20, "tên khóa học tối đa 20 ký tự"),
-  ngayTao: yup.string().required("Vui lòng chọn ngày tạo"),
+    .max(30, "tên khóa học tối đa 20 ký tự"),
+  ngayTao: yup.string().required("vui lòng chọn ngày tạo"),
+  maDanhMucKhoaHoc: yup.string().required("vui lòng chọn danh mục khóa học"),
+  hinhAnh: yup.mixed().required().test("file", "vui lòng chọn hình", (value) => {
+    return value.length !== 0
+  }),
   moTa: yup
     .string()
     .required("Vui lòng nhập mô tả")
@@ -117,12 +121,17 @@ export default function ThemKhoaHoc() {
           <div className="form-group">
             <h3>Danh mục khóa học</h3>
             <select class="form-control" {...register("maDanhMucKhoaHoc")}>
-              <option disabled>--select--</option>
+              <option disabled selected value="">
+                --select--
+              </option>
               {maDanhMucKhoaHoc.map((danhMuc) => {
                 const { maDanhMuc, tenDanhMuc } = danhMuc;
                 return <option value={maDanhMuc}>{tenDanhMuc}</option>;
               })}
             </select>
+            <p className="text-danger" style={{ textTransform: "none" }}>
+              {errors.maDanhMucKhoaHoc?.message}
+            </p>
           </div>
           <div className="form-group">
             <h3>Ngày tạo khóa học</h3>
@@ -157,6 +166,9 @@ export default function ThemKhoaHoc() {
                   onChangeCapture={handleImage}
                   {...register("hinhAnh")}
                 />
+                <p className="text-danger" style={{ textTransform: "none" }}>
+                  {errors.hinhAnh?.message}
+                </p>
               </div>
             </div>
             <div className="col-6">
@@ -170,7 +182,7 @@ export default function ThemKhoaHoc() {
           <div className="form-group">
             <h3 htmlFor="exampleFormControlTextarea1">Mô tả</h3>
             <textarea
-              style={{ height: "112px", textTransform:"none" }}
+              style={{ height: "112px", textTransform: "none" }}
               className="form-control"
               {...register("moTa")}
             />

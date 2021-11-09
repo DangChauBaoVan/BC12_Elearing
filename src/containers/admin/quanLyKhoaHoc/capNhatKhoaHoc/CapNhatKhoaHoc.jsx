@@ -13,11 +13,6 @@ import * as yup from "yup";
 
 // tạo một validation schema với yup
 const schema = yup.object().shape({
-  maKhoaHoc: yup
-    .string()
-    .required("Vui lòng nhập mã nhóm")
-    .min(2, "mã nhóm nhỏ nhất 5 ký tự")
-    .max(8, "mã nhóm tối đa 8 ký tự"),
   tenKhoaHoc: yup
     .string()
     .required("Vui lòng nhập tên khóa học")
@@ -79,6 +74,7 @@ export default function CapNhatKhoaHoc(props) {
   const submitForm = (e) => {
     const form = {
       ...e,
+      maKhoaHoc: maKhoaHoc,
       taiKhoanNguoiTao: nguoiTao.taiKhoan,
       hinhAnh: e.hinhAnh[0],
       maNhom: "GP01",
@@ -103,12 +99,9 @@ export default function CapNhatKhoaHoc(props) {
               type="text"
               placeholder="Ex: java, c++, KH01, ..."
               className="form-control"
-              defaultValue={maKhoaHoc}
-              {...register("maKhoaHoc")}
+              value={maKhoaHoc}
+              disabled
             />
-            <p className="text-danger" style={{ textTransform: "none" }}>
-              {errors.maKhoaHoc?.message}
-            </p>
           </div>
           <div className="form-group">
             <h3 htmlFor="exampleInputEmail1">Tên khóa học</h3>
@@ -182,7 +175,7 @@ export default function CapNhatKhoaHoc(props) {
           <div className="form-group">
             <h3 htmlFor="exampleFormControlTextarea1">Mô tả</h3>
             <textarea
-              style={{ height: "111.3px" }}
+              style={{ height: "111.3px",textTransform:"none" }}
               className="form-control"
               defaultValue={moTa}
               {...register("moTa")}
