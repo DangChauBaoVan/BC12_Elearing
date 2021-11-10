@@ -6,6 +6,7 @@ import { useFormik, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { actLogin } from "./module/action";
 import DangKy from "containers/shared/Auth/dangKy/DangKy";
+import CapNhat from "../capNhatThongTin/CapNhat";
 const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.remove("active");
@@ -16,6 +17,11 @@ export default function Login() {
 
   const handleOnClickRes = () => {
     let loginForm = document.querySelector(".register-form-container");
+    loginForm.classList.toggle("active");
+  };
+
+  const handleOnClickUpdate = () => {
+    let loginForm = document.querySelector(".update-form-container");
     loginForm.classList.toggle("active");
   };
 
@@ -71,7 +77,11 @@ export default function Login() {
         <button type="submit" className="btn">
           Đăng Nhập
         </button>
-        <p>quên mật khẩu ?</p>
+        <p>
+          <a onClick={handleOnClickUpdate} href="#">
+            quên mật khẩu
+          </a>
+        </p>
         <p>
           <a onClick={handleOnClickRes} href="#">
             tạo tài khoản
@@ -79,6 +89,7 @@ export default function Login() {
         </p>
       </form>
       <DangKy />
+      <CapNhat />
     </div>
   );
 }
