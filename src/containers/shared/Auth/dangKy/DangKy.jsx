@@ -13,9 +13,10 @@ import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
-const handleOnClickRes = () => {
+const handleOnClickRes = (e) => {
   let formRegister = document.querySelector(".register-form-container");
   formRegister.classList.remove("active");
+  document.getElementById("clear_form").reset();
 };
 
 const schema = yup.object().shape({
@@ -48,7 +49,7 @@ const schema = yup.object().shape({
   soDT: yup
     .string()
     .required("Vui lòng nhập số điện thoại")
-    .matches(/^[0-9\-\+]{9,15}$/, "định dạng có chữ")
+    .matches(/^0[0-9\-\+]/, "định dạng không đúng")
     .min(9, "Số điện thoại nhỏ nhất 9 số")
     .max(15, "Số điện thoại lớp nhất 15 số"),
 });
@@ -65,26 +66,20 @@ export default function DangKy() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
   const submitForm = (data, e) => {
-    // console.log({ ...data, maNhom: "GP01" });
-    e.target.reset();
-    dispatch(actRegister({ ...data, maNhom: "GP01" }));
+    dispatch(actRegister({ ...data, maNhom: "GP01" }, e));
   };
 
   return (
-    <div className="register-form-container">
-      <div
-        id="close-register-btn"
-        className="fas fa-times"
-        value
-        onClick={handleOnClickRes}
-      >
+    <div className="register-form-container" >
+      <div id="close-register-btn" onClick={handleOnClickRes}>
         <Icon icon={faTimes} />
       </div>
-      <form onSubmit={handleSubmit(submitForm)}>
+      <form id="clear_form" onSubmit={handleSubmit(submitForm)}>
         <h3>đăng ký</h3>
         <div className="row">
           <div className="col-6">
