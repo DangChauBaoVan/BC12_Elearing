@@ -11,6 +11,7 @@ import {
   faList,
   faComment,
   faBlog,
+  faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Login from "containers/shared/Auth/Login/Login";
@@ -22,6 +23,7 @@ import { actLayDanhMucKhoaHoc } from "./module/action";
 import { useEffect } from "react";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
+
 const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.toggle("active");
@@ -30,6 +32,7 @@ const clickSearch = () => {
   let searchForm = document.querySelector(".search-form");
   searchForm.classList.toggle("active");
 };
+
 export default function Header() {
   const { currentUser } = useSelector((state) => state.loginReducer);
   const {danhMucKhoaHoc} = useSelector((state) => state.headerReducer)
@@ -37,7 +40,6 @@ export default function Header() {
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(actLogOut());
-
   }
   useEffect(() => {
     dispatch(actLayDanhMucKhoaHoc());
@@ -100,7 +102,7 @@ export default function Header() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img src="https://picsum.photos/200" alt="" />
+                  <img src="https://picsum.photos/200" alt="..." />
                 </a>
                 <div className="dropdown-menu dropdown-menu-right dropdown-menu-lg-right">
                   <button className="dropdown-item" type="button">
@@ -145,7 +147,7 @@ export default function Header() {
               >
                 <Icon icon={faUser} className="faEditIcon" />
               </a>
-            )}
+            )},
           </div>
         </div>
         <div className="header-2">

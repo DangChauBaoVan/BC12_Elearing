@@ -5,7 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useFormik, Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { actLogin } from "./module/action";
-
+import DangKy from "containers/shared/Auth/dangKy/DangKy";
 const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.remove("active");
@@ -13,6 +13,11 @@ const handleOnClick = () => {
 
 export default function Login() {
   const dispatch = useDispatch();
+
+  const handleOnClickRes = () => {
+    let loginForm = document.querySelector(".register-form-container");
+    loginForm.classList.toggle("active");
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +29,6 @@ export default function Login() {
       formik.resetForm();
       dispatch(actLogin(values));
       handleOnClick();
-      
     },
   });
   return (
@@ -67,13 +71,14 @@ export default function Login() {
         <button type="submit" className="btn">
           Đăng Nhập
         </button>
+        <p>quên mật khẩu ?</p>
         <p>
-          forget password ? <a href="#">click here</a>
-        </p>
-        <p>
-          don't have an account ? <a href="#">create one</a>
+          <a onClick={handleOnClickRes} href="#">
+            tạo tài khoản
+          </a>
         </p>
       </form>
+      <DangKy />
     </div>
   );
 }

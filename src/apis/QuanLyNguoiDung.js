@@ -5,6 +5,9 @@ const quanLyNguoiDungApi = {
   loginApi(loginInfo) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", loginInfo);
   },
+  dangKy(form) {
+    return callApi(`QuanLyNguoiDung/DangKy`, "POST", form);
+  },
   getAllUser(tenNguoiDung = "") {
     if (tenNguoiDung) {
       return callApi(
