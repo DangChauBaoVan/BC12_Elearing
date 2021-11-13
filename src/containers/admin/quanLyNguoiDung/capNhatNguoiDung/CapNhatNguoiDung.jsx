@@ -54,7 +54,11 @@ export default function CapNhatNguoiDung(props) {
   //form
   const onchangeForm = (e) => {
     dispatch(
-      actCapNhatNguoiDung({ ...e, maNhom: "GP01", taiKhoan: taiKhoan }, accessToken, history)
+      actCapNhatNguoiDung(
+        { ...e, maNhom: "GP01", taiKhoan: taiKhoan },
+        accessToken,
+        history
+      )
     );
   };
 
@@ -146,13 +150,21 @@ export default function CapNhatNguoiDung(props) {
             </select>
           </div>
         </div>
-        <Link to="/admin/quanlynguoidung" className="themNguoiDungLinkHome">
-          {"<<"} Trở lại
-        </Link>
-        <button type="submit" className="btn btn-primary themNguoiDungBtn">
-          Update
-        </button>
       </form>
+      <div className="row_new w-100">
+        <div>
+          {" "}
+          <Link to="/admin/quanlynguoidung" className="themLinkHome">
+            {"<<"} Trở lại
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary">
+            Thêm
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

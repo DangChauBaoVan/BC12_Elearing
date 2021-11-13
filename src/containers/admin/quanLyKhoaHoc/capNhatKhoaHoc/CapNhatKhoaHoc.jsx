@@ -80,7 +80,7 @@ export default function CapNhatKhoaHoc(props) {
       maNhom: "GP01",
       ngayTao: moment(e.ngayTao).format("DD/MM/YYYY"),
     };
-    console.log(form)
+    console.log(form);
     let formData = new FormData();
     for (let key in form) {
       formData.append(key, form[key]);
@@ -175,7 +175,7 @@ export default function CapNhatKhoaHoc(props) {
           <div className="form-group">
             <h3 htmlFor="exampleFormControlTextarea1">Mô tả</h3>
             <textarea
-              style={{ height: "111.3px",textTransform:"none" }}
+              style={{ height: "111.3px", textTransform: "none" }}
               className="form-control"
               defaultValue={moTa}
               {...register("moTa")}
@@ -185,14 +185,21 @@ export default function CapNhatKhoaHoc(props) {
             </p>
           </div>
         </div>
-        <div className="col-12"></div>
-        <Link to="/admin/quanlyKhoaHoc" className="themNguoiDungLinkHome">
-          {"<<"} Trở lại
-        </Link>
-        <button type="submit" className="btn btn-primary themNguoiDungBtn">
-          Cập Nhật
-        </button>
       </form>
+      <div className="row_new w-100">
+        <div>
+          {" "}
+          <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
+            {"<<"} Trở lại
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary">
+            Thêm
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

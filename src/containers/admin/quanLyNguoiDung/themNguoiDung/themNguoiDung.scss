@@ -1,10 +1,10 @@
-.themNguoiDungLinkHome {
-  font-size: 20px;
-  margin-left: 18px;
-}
-.themNguoiDungBtn {
-  position: relative;
-  right: -106.7rem;
+.row_new {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .themLinkHome {
+    font-size: 20px;
+  }
 }
 .form-control {
   height: 36px;

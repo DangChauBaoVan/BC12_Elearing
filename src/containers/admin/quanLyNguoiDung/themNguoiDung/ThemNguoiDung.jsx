@@ -116,7 +116,11 @@ export default function ThemNguoiDung() {
           </div>
           <div className="form-group">
             <h3>Số điện thoại</h3>
-            <input type="number" className="form-control" {...register("soDt")} />
+            <input
+              type="number"
+              className="form-control"
+              {...register("soDt")}
+            />
             {errors.soDt && (
               <p className="text-danger" style={{ textTransform: "none" }}>
                 {errors.soDt?.message}
@@ -133,13 +137,21 @@ export default function ThemNguoiDung() {
             </select>
           </div>
         </div>
-        <Link to="/admin/quanlynguoidung" className="themNguoiDungLinkHome">
-          {"<<"} Trở lại
-        </Link>
-        <button type="submit" className="btn btn-primary themNguoiDungBtn">
-          Thêm
-        </button>
       </form>
+      <div className="row_new w-100">
+        <div>
+          {" "}
+          <Link to="/admin/quanlynguoidung" className="themLinkHome">
+            {"<<"} Trở lại
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary">
+            Thêm
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

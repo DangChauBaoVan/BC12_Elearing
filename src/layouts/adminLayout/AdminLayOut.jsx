@@ -7,7 +7,7 @@ import "./adminLayout.scss";
 //font awesome
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import {
-  faEdit,
+  faBookOpen,
   faHome,
   faSignOutAlt,
   faBars,
@@ -49,11 +49,9 @@ function AdminLayout({ children }) {
           left: 0,
         }}
       >
-        <img
-          src="https://i.imgur.com/lC22izJ.png"
-          alt="..."
-          className="mt-4 mb-4"
-        />
+        <a href="#" className="logo">
+          <Icon icon={faBookOpen} /> {" "}E-Learning
+        </a>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<AppstoreOutlined />}>
             <Link to="/admin/quanlykhoahoc">Khóa Học</Link>

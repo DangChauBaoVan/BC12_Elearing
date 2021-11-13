@@ -191,13 +191,21 @@ export default function ThemKhoaHoc() {
             </p>
           </div>
         </div>
-        <Link to="/admin/quanlyKhoaHoc" className="themNguoiDungLinkHome">
-          {"<<"} Trở lại
-        </Link>
-        <button type="submit" className="btn btn-primary themNguoiDungBtn">
-          Thêm
-        </button>
       </form>
+      <div className="row_new w-100">
+        <div>
+          {" "}
+          <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
+            {"<<"} Trở lại
+          </Link>
+        </div>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary">
+            Thêm
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
