@@ -1,21 +1,16 @@
-$color-1: #c67100;
-$color-2: #ffd149;
-$color-3: #ffa000;
-$color-black: black;
-
 .ant-layout-sider {
-  background-color: $color-3;
+  background-color: var(--yellow-orange);
   .ant-menu.ant-menu-dark {
-    background-color: $color-3;
+    background-color: var(--yellow-orange);
     &:not(.ant-menu-horizontal) {
       .ant-menu-item-selected {
-        background-color: $color-2;
+        background-color: var(--yellow);
       }
     }
   }
 }
 .ant-layout-header {
-  background: $color-1;
+  background-color: var(--dark-color);
   padding: 0;
   .thong__tin__admin {
     float: right;
@@ -36,7 +31,7 @@ $color-black: black;
       }
       .dropdown__toggle {
         svg {
-          color: $color-2;
+          color: var(--yellow);
           font-size: 3rem;
         }
         &::after {
@@ -51,7 +46,7 @@ $color-black: black;
     }
     .dropdown-menu {
       top: 0;
-      transition: .1s all ease;
+      transition: 0.1s all ease;
     }
   }
 }

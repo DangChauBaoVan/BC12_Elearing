@@ -5,7 +5,7 @@
     float: left;
     margin-top: 2.3rem;
     &:active {
-      background-color: #e3960c;
+      background-color: var(--yellow-active);
     }
   }
   .quanLyNguoiDungTitle {

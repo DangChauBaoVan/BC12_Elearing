@@ -31,11 +31,18 @@ const schema = yup.object().shape({
     .max(20, "mật khẩu tối đa 20 ký tự")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Password can only contain Latin letters."
+      "mật khẩu bao gồm chữ số, một ký đặt biệt"
     ),
+  xacNhanMatKhau: yup
+    .string()
+    .oneOf([yup.ref("matKhau"), null], "mật khẩu xác nhận không khớp"),
   hoTen: yup
     .string()
     .required("Vui lòng nhập họ tên")
+    .matches(
+      /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+/,
+      "không đúng định dạng"
+    )
     .min(5, "mật khẩu nhỏ nhất 5 ký tự"),
   email: yup
     .string()
@@ -65,12 +72,23 @@ export default function CapNhat() {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
   const submitForm = (data, e) => {
-    dispatch(actUpdateUser({ ...data, maNhom: "GP01", maLoaiNguoiDung: "HV" }, accessToken, e));
+    dispatch(
+      actUpdateUser(
+        {
+          email: data.email,
+          hoTen: data.hoTen,
+          matKhau: data.matKhau,
+          soDT: data.soDT,
+          taiKhoan: data.taiKhoan,
+          maNhom: "GP01",
+        },
+        e
+      )
+    );
   };
 
   return (
@@ -82,19 +100,6 @@ export default function CapNhat() {
         <h3>Cập nhật thông tin</h3>
         <div className="row">
           <div className="col-6">
-            <p>Họ tên</p>
-            <input
-              type="text"
-              name="hoTen"
-              className={`box ${errors.hoTen?.message && "border__red"}`}
-              placeholder="nhập họ tên"
-              {...register("hoTen")}
-            />
-            <div className="text__err">
-              <p className="text-danger" style={{ textTransform: "none" }}>
-                {errors.hoTen?.message}
-              </p>
-            </div>
             <p>Tài khoản</p>
             <input
               type="text"
@@ -106,6 +111,19 @@ export default function CapNhat() {
             <div className="text__err">
               <p className="text-danger" style={{ textTransform: "none" }}>
                 {errors.taiKhoan?.message}
+              </p>
+            </div>
+            <p>Họ tên</p>
+            <input
+              type="text"
+              name="hoTen"
+              className={`box ${errors.hoTen?.message && "border__red"}`}
+              placeholder="nhập họ tên"
+              {...register("hoTen")}
+            />
+            <div className="text__err">
+              <p className="text-danger" style={{ textTransform: "none" }}>
+                {errors.hoTen?.message}
               </p>
             </div>
           </div>
@@ -158,6 +176,30 @@ export default function CapNhat() {
             {errors.matKhau?.message}
           </p>
         </div>
+        <p>Xác Nhận Mật khẩu</p>
+        <input
+          type={passwordShown ? "text" : "password"}
+          style={{ padding: "1rem 4rem 1.2rem 1rem" }}
+          className={`box ${errors.xacNhanMatKhau?.message && "border__red"}`}
+          placeholder="nhập mật khẩu"
+          {...register("xacNhanMatKhau")}
+        />
+        <div className="main__icon_eye">
+          <Icon
+            icon={passwordShown ? faEye : faEyeSlash}
+            className="icon__eye"
+            onClick={seePass}
+          />
+        </div>
+        <div className="text__err">
+          <p className="text-danger" style={{ textTransform: "none" }}>
+            {errors.xacNhanMatKhau?.message}
+          </p>
+        </div>
+        <small className="message_warn">
+          nhập đúng tài khoản của bạn, còn những thông tin còn lại có thể thay
+          đổi
+        </small>
         <button type="submit" className="btn">
           Cập nhật
         </button>

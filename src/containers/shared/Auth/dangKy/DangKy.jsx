@@ -34,9 +34,16 @@ const schema = yup.object().shape({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Password can only contain Latin letters."
     ),
+  xacNhanMatKhau: yup
+    .string()
+    .oneOf([yup.ref("matKhau"), null], "mật khẩu xác nhận không khớp"),
   hoTen: yup
     .string()
     .required("Vui lòng nhập họ tên")
+    .matches(
+      /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+/,
+      "không đúng định dạng"
+    )
     .min(5, "mật khẩu nhỏ nhất 5 ký tự"),
   email: yup
     .string()
@@ -66,16 +73,27 @@ export default function DangKy() {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
   const submitForm = (data, e) => {
-    dispatch(actRegister({ ...data, maNhom: "GP01" }, e));
+    dispatch(
+      actRegister(
+        {
+          email: data.email,
+          hoTen: data.hoTen,
+          matKhau: data.matKhau,
+          soDT: data.soDT,
+          taiKhoan: data.taiKhoan,
+          maNhom: "GP01",
+        },
+        e
+      )
+    );
   };
 
   return (
-    <div className="register-form-container" >
+    <div className="register-form-container">
       <div id="close-register-btn" onClick={handleOnClickRes}>
         <Icon icon={faTimes} />
       </div>
@@ -157,6 +175,26 @@ export default function DangKy() {
         <div className="text__err">
           <p className="text-danger" style={{ textTransform: "none" }}>
             {errors.matKhau?.message}
+          </p>
+        </div>
+        <p>Xác nhận lại Mật khẩu</p>
+        <input
+          type={passwordShown ? "text" : "password"}
+          style={{ padding: "1rem 4rem 1.2rem 1rem" }}
+          className={`box ${errors.xacNhanMatKhau?.message && "border__red"}`}
+          placeholder="nhập mật khẩu"
+          {...register("xacNhanMatKhau")}
+        />
+        <div className="main__icon_eye">
+          <Icon
+            icon={passwordShown ? faEye : faEyeSlash}
+            className="icon__eye"
+            onClick={seePass}
+          />
+        </div>
+        <div className="text__err">
+          <p className="text-danger" style={{ textTransform: "none" }}>
+            {errors.xacNhanMatKhau?.message}
           </p>
         </div>
         <button type="submit" className="btn">

@@ -11,16 +11,16 @@
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
-    border: 1px solid #ffa000;
-    color: #c67100;
+    border: 1px solid var(--yellow-orange);
+    color: var(--dark-color);
     transition: 300ms all ease;
     &:hover {
       color: black;
-      background-color: #ffd149;
+      background-color: var(--yellow-orange);
     }
   }
   .activePaginate a {
-    background-color: #ffd149;
+    background-color: var(--yellow-orange);
   }
   .disablePaginate a {
     background-color: silver;
