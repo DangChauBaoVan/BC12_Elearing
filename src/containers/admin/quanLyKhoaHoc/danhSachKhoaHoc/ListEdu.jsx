@@ -76,7 +76,9 @@ export default function ListEdu() {
       actDanhSachNguoiDungChoGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken)
     );
     // danh sách người dùng đã ghi danh
-    dispatch(actDanhSachHocVienDaGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken))
+    dispatch(
+      actDanhSachHocVienDaGhiDanh({ maKhoaHoc: maKhoaHoc }, accessToken)
+    );
     setMaKhoaHoc(maKhoaHoc);
   };
   return (
@@ -105,7 +107,15 @@ export default function ListEdu() {
                   <td>{maKhoaHoc}</td>
                   <td>{tenKhoaHoc}</td>
                   <td>
-                    <img style={{width:"60px", height:"30px"}} src={hinhAnh} alt="..." />
+                    <img
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://static.thenounproject.com/png/583402-200.png";
+                      }}
+                      style={{ width: "60px", height: "45px" }}
+                      src={hinhAnh}
+                      alt="..."
+                    />
                   </td>
                   <td>{luotXem}</td>
                   <td>{hoTen}</td>

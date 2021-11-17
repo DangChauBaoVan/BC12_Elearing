@@ -51,7 +51,6 @@ export default function ThemNguoiDung() {
   const submitForm = (e) => {
     dispatch(actThemNguoiDung({ ...e, maNhom: "GP01" }, accessToken, history));
   };
-  // onError={(e)=>{e.target.onerror = null; e.target.src="https://picsum.photos/200/300"}}
   return (
     <div className="text-left">
       <h1>THÊM NGƯỜI DÙNG</h1>
