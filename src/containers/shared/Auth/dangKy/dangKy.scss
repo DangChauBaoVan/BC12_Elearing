@@ -90,21 +90,3 @@
 .border_green {
   border: solid 0.5px rgb(62, 160, 62) !important;
 }
-.main__icon_eye {
-  position: relative;
-  float: right;
-  top: -43px;
-  border-radius: 8px;
-  cursor: pointer;
-  width: 30px;
-  height: 44px;
-  line-height: 43px;
-  transition: all 0.4s ease;
-  right: 4px;
-  .icon__eye {
-    color: orange;
-  }
-  &:hover {
-    background-color: #e7e0ca;
-  }
-}

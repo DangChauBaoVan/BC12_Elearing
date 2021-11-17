@@ -180,17 +180,10 @@ export default function CapNhat() {
         <input
           type={passwordShown ? "text" : "password"}
           style={{ padding: "1rem 4rem 1.2rem 1rem" }}
-          className={`box ${errors.xacNhanMatKhau?.message && "border__red"}`}
+          className="box"
           placeholder="nhập mật khẩu"
           {...register("xacNhanMatKhau")}
         />
-        <div className="main__icon_eye">
-          <Icon
-            icon={passwordShown ? faEye : faEyeSlash}
-            className="icon__eye"
-            onClick={seePass}
-          />
-        </div>
         <div className="text__err">
           <p className="text-danger" style={{ textTransform: "none" }}>
             {errors.xacNhanMatKhau?.message}
