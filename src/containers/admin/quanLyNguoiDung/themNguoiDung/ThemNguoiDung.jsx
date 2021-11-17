@@ -49,10 +49,9 @@ export default function ThemNguoiDung() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const submitForm = (e) => {
-    // console.log();
     dispatch(actThemNguoiDung({ ...e, maNhom: "GP01" }, accessToken, history));
   };
-
+  // onError={(e)=>{e.target.onerror = null; e.target.src="https://picsum.photos/200/300"}}
   return (
     <div className="text-left">
       <h1>THÊM NGƯỜI DÙNG</h1>
@@ -137,21 +136,19 @@ export default function ThemNguoiDung() {
             </select>
           </div>
         </div>
+        <div className="row_new">
+          <div>
+            <Link to="/admin/quanlynguoidung" className="themLinkHome">
+              {"<<"} Trở lại
+            </Link>
+          </div>
+          <div>
+            <button type="submit" className="btn btn-primary">
+              Thêm
+            </button>
+          </div>
+        </div>
       </form>
-      <div className="row_new w-100">
-        <div>
-          {" "}
-          <Link to="/admin/quanlynguoidung" className="themLinkHome">
-            {"<<"} Trở lại
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button type="submit" className="btn btn-primary">
-            Thêm
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

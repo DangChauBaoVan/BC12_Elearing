@@ -24,9 +24,12 @@ const schema = yup.object().shape({
     .max(30, "tên khóa học tối đa 20 ký tự"),
   ngayTao: yup.string().required("vui lòng chọn ngày tạo"),
   maDanhMucKhoaHoc: yup.string().required("vui lòng chọn danh mục khóa học"),
-  hinhAnh: yup.mixed().required().test("file", "vui lòng chọn hình", (value) => {
-    return value.length !== 0
-  }),
+  hinhAnh: yup
+    .mixed()
+    .required()
+    .test("file", "vui lòng chọn hình", (value) => {
+      return value.length !== 0;
+    }),
   moTa: yup
     .string()
     .required("Vui lòng nhập mô tả")
@@ -191,21 +194,19 @@ export default function ThemKhoaHoc() {
             </p>
           </div>
         </div>
+        <div className="row_new">
+          <div>
+            <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
+              {"<<"} Trở lại
+            </Link>
+          </div>
+          <div>
+            <button type="submit" className="btn btn-primary">
+              Thêm
+            </button>
+          </div>
+        </div>
       </form>
-      <div className="row_new w-100">
-        <div>
-          {" "}
-          <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
-            {"<<"} Trở lại
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button type="submit" className="btn btn-primary">
-            Thêm
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

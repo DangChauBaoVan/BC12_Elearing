@@ -14,7 +14,7 @@ const schema = yup.object().shape({
   matKhau: yup
     .string()
     .required("Vui lòng nhập mật khẩu")
-    .min(8, "mật khẩu nhỏ nhất 8 ký tự")
+    .min(6, "mật khẩu nhỏ nhất 6 ký tự")
     .max(20, "mật khẩu tối đa 20 ký tự"),
   hoTen: yup
     .string()
@@ -150,21 +150,19 @@ export default function CapNhatNguoiDung(props) {
             </select>
           </div>
         </div>
+        <div className="row_new">
+          <div>
+            <Link to="/admin/quanlynguoidung" className="themLinkHome">
+              {"<<"} Trở lại
+            </Link>
+          </div>
+          <div>
+            <button type="submit" className="btn btn-primary">
+              Thêm
+            </button>
+          </div>
+        </div>
       </form>
-      <div className="row_new w-100">
-        <div>
-          {" "}
-          <Link to="/admin/quanlynguoidung" className="themLinkHome">
-            {"<<"} Trở lại
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button type="submit" className="btn btn-primary">
-            Thêm
-          </button>
-        </div>
-      </div>
     </div>
   );
 }

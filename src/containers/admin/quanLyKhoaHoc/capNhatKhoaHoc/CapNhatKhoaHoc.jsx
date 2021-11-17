@@ -185,21 +185,19 @@ export default function CapNhatKhoaHoc(props) {
             </p>
           </div>
         </div>
+        <div className="row_new">
+          <div>
+            <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
+              {"<<"} Trở lại
+            </Link>
+          </div>
+          <div>
+            <button type="submit" className="btn btn-primary">
+              Thêm
+            </button>
+          </div>
+        </div>
       </form>
-      <div className="row_new w-100">
-        <div>
-          {" "}
-          <Link to="/admin/quanlyKhoaHoc" className="themLinkHome">
-            {"<<"} Trở lại
-          </Link>
-        </div>
-        <div>
-          {" "}
-          <button type="submit" className="btn btn-primary">
-            Thêm
-          </button>
-        </div>
-      </div>
     </div>
   );
 }
