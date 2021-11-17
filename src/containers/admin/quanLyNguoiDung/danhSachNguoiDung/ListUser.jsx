@@ -82,11 +82,11 @@ export default function ListUser() {
         <table class="table">
           <thead>
             <tr>
-              <th>STT</th>
-              <th>Tài khoản</th>
-              <th>Mật khẩu</th>
-              <th>Họ tên</th>
-              <th>Email</th>
+              <th style={{width:"5rem"}}>STT</th>
+              <th style={{width:"20rem"}}>Tài khoản</th>
+              <th style={{width:"20rem"}}>Mật khẩu</th>
+              <th style={{width:"25rem"}}>Họ tên</th>
+              <th style={{width:"25rem"}}>Email</th>
               <th>Số diện thoại</th>
               <th>Thao tác</th>
             </tr>

@@ -88,9 +88,9 @@ export default function ListEdu() {
         <table class="table">
           <thead>
             <tr>
-              <th>STT</th>
-              <th>Mã khóa học</th>
-              <th>Tên khóa học</th>
+              <th style={{width:"5rem"}}>STT</th>
+              <th style={{width:"17rem"}}>Mã khóa học</th>
+              <th style={{width:"45rem"}}>Tên khóa học</th>
               <th>Hình ảnh</th>
               <th>Lượt xem</th>
               <th>Người tạo</th>
@@ -110,7 +110,8 @@ export default function ListEdu() {
                     <img
                       onError={(e) => {
                         e.target.onerror = null;
-                        e.target.src = "https://static.thenounproject.com/png/583402-200.png";
+                        e.target.src =
+                          "https://static.thenounproject.com/png/583402-200.png";
                       }}
                       style={{ width: "60px", height: "45px" }}
                       src={hinhAnh}
