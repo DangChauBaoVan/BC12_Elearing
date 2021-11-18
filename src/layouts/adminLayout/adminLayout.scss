@@ -26,9 +26,12 @@
     padding-right: 60px;
     display: flex;
     .drop__admin {
-      margin: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 155px;
       .drop__menu {
-        transform: translate3d(-116px, 62px, 0px) !important;
+        transform: translate3d(57px, 62px, 0px) !important;
         top: -10px;
         .drop__item {
           height: 33px;
@@ -54,7 +57,6 @@
       }
     }
     .dropdown-menu {
-      top: 0;
       transition: 0.1s all ease;
     }
   }

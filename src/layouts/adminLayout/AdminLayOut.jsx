@@ -28,7 +28,7 @@ function AdminLayout({ children }) {
     return <Redirect to="/" />;
   }
 
-  const { maLoaiNguoiDung } = currentUser;
+  const { maLoaiNguoiDung, hoTen } = currentUser;
 
   if (maLoaiNguoiDung === "HV") {
     return <Redirect to="/" />;
@@ -61,6 +61,10 @@ function AdminLayout({ children }) {
         <Header className="site-layout-background">
           <div className="thong__tin__admin">
             <div className="dropdown drop__admin">
+              <p className="d-flex align-items-baseline justify-content-around w-75">
+                <span>Xin chào!</span>
+                <h4>{hoTen}</h4>
+              </p>
               <span className="dropdown__toggle" data-toggle="dropdown">
                 <Icon icon={faBars} />
               </span>
