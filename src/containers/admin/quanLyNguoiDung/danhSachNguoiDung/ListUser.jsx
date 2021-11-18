@@ -8,10 +8,10 @@ import TimNguoiDung from "../timNguoiDung/TimNguoiDung";
 //font awesome
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
-
+//action
 import { actXoaNguoiDung } from "./action";
 import { actGetAllUser } from "../module/action";
-import { actdanhSachKHoaHocNguoiDungCHuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
+import { actdanhSachKHoaHocNguoiDungChuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
 import { actDanhSachKhoaHocChoXacNhan } from "../ghiDanh/moduleDanhSachKhoaHocChoXetDuyet/action";
 import { actDanhSachKhoaHocDaGhiDanh } from "../ghiDanh/modueDanhSachKhoaHocDaDangKy/action";
 
@@ -66,7 +66,7 @@ export default function ListUser() {
 
   const onChangeValue = (taiKhoan) => {
     //lấy danh sách khóa học người dùng chưa đăng ký
-    dispatch(actdanhSachKHoaHocNguoiDungCHuaGhiDanh(taiKhoan, accessToken))
+    dispatch(actdanhSachKHoaHocNguoiDungChuaGhiDanh(taiKhoan, accessToken))
     //lấy danh sách khóa học chờ xác nhận
     dispatch(actDanhSachKhoaHocChoXacNhan({taiKhoan:taiKhoan}, accessToken))
     //lấy danh sách khóa học đã ghi danh
@@ -82,11 +82,11 @@ export default function ListUser() {
         <table class="table">
           <thead>
             <tr>
-              <th>STT</th>
-              <th>Tài khoản</th>
-              <th>Mật khẩu</th>
-              <th>Họ tên</th>
-              <th>Email</th>
+              <th style={{width:"5rem"}}>STT</th>
+              <th style={{width:"20rem"}}>Tài khoản</th>
+              <th style={{width:"20rem"}}>Mật khẩu</th>
+              <th style={{width:"25rem"}}>Họ tên</th>
+              <th style={{width:"25rem"}}>Email</th>
               <th>Số diện thoại</th>
               <th>Thao tác</th>
             </tr>
@@ -98,8 +98,8 @@ export default function ListUser() {
                 <tr>
                   <td>{quantity + 1}</td>
                   <td>{taiKhoan}</td>
-                  <td>{matKhau}</td>
-                  <td>{hoTen}</td>
+                  <td style={{textTransform:"none"}}>{matKhau}</td>
+                  <td style={{ textTransform: "none" }}>{hoTen}</td>
                   <td>{email}</td>
                   <td>{soDt}</td>
                   <td>

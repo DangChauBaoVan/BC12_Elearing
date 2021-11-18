@@ -1,8 +1,8 @@
-import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
+import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
 
 export const actCapNhatKhoaHoc = (form, history) => {
   return (dispatch) => {
-    apiKhoaHoc
+    quanLyKhoaHoc
       .capNhatKhoaHoc(form)
       .then((res) => {
         console.log(res.data)

@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
+import quanLyNguoiDungApi from "apis/QuanLyNguoiDung";
 import { DANH_SACH_HOC_VIEN_DA_GHI_DANH } from "./type";
 
 const actDanhSachHocVienDaGhiDanhSuccess = (maKhoaHoc) => ({
@@ -8,7 +8,7 @@ const actDanhSachHocVienDaGhiDanhSuccess = (maKhoaHoc) => ({
 
 export const actDanhSachHocVienDaGhiDanh = (maKhoaHoc, accessToken) => {
   return (dispatch) => {
-    apiNguoiDung
+    quanLyNguoiDungApi
       .danhSachNguoiDungDaGhiDanh(maKhoaHoc, accessToken)
       .then((res) => {
         dispatch(actDanhSachHocVienDaGhiDanhSuccess(res.data))

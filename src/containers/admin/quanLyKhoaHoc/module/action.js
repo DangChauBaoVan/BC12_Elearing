@@ -1,4 +1,5 @@
-import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
+import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
+
 import {
   GET_ALL_EDU_REQUEST,
   GET_ALL_EDU_SUCCESS,
@@ -21,7 +22,7 @@ export const actGetAllEdu = (tenKhoaHoc = '') => {
   return async (dispatch) => {
     dispatch(actGetAllEduRequest());
     try {
-      const result = await apiKhoaHoc.getAllEdu(tenKhoaHoc);
+      const result = await quanLyKhoaHoc.layDanhSachKhoaHoc(tenKhoaHoc);
       // console.log(result.data);
       dispatch(actGetAllEduSuccess(result.data));
     } catch (err) {

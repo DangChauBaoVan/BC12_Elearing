@@ -1,34 +1,63 @@
-$color-1: #c67100;
-$color-2: #ffd149;
-$color-3: #ffa000;
-$color-black: black;
-
 .ant-layout-sider {
-  background-color: $color-3;
+  background-color: var(--yellow-orange);
   .ant-menu.ant-menu-dark {
-    background-color: $color-3;
+    background-color: var(--yellow-orange);
+    margin: 1rem 0;
     &:not(.ant-menu-horizontal) {
       .ant-menu-item-selected {
-        background-color: $color-2;
+        background-color: var(--yellow);
       }
     }
   }
 }
+
+.ant__layout__update {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+}
+
 .ant-layout-header {
-  background: $color-1;
+  background-color: var(--dark-color);
   padding: 0;
   .thong__tin__admin {
     float: right;
     padding-right: 60px;
     display: flex;
     .drop__admin {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 155px;
       .drop__menu {
-        margin-left: -85px;
+        transform: translate3d(57px, 62px, 0px) !important;
+        top: -10px;
         .drop__item {
-          height: 25px;
+          height: 33px;
           line-height: 25px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #5e5e5e;
         }
       }
+      .dropdown__toggle {
+        svg {
+          color: var(--yellow);
+          font-size: 3rem;
+        }
+        &::after {
+          content: "";
+          border: none;
+        }
+      }
+      .show {
+        display: flex;
+        background-color: #ffffff00;
+      }
+    }
+    .dropdown-menu {
+      transition: 0.1s all ease;
     }
   }
 }
@@ -40,5 +69,17 @@ $color-black: black;
     padding: 24px;
     text-align: center;
     height: 100%;
+  }
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: var(--dark-color);
+  cursor: default;
+  margin: 1rem 0;
+  display: block;
+  &:hover {
+    color: var(--dark-color);
   }
 }

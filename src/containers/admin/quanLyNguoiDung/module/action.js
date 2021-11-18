@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
+import quanLyNguoiDungApi from "apis/QuanLyNguoiDung";
 
 const { GET_ALL_REQUEST, GET_ALL_SUCCESS, GET_ALL_FAIL } = require("./type");
 
@@ -18,7 +18,7 @@ export const actGetAllUser = (tenNguoiDung='') => {
   return async (dispatch) => {
     dispatch(actGetAllUserRequest());
     try {
-      const result = await apiNguoiDung.getAllUser(tenNguoiDung);
+      const result = await quanLyNguoiDungApi.getAllUser(tenNguoiDung);
       //   console.log(result.data)
       dispatch(actGetAllUserSuccess(result.data));
     } catch (err) {
