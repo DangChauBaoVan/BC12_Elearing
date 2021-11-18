@@ -41,16 +41,9 @@ function AdminLayout({ children }) {
 
   return (
     <Layout color={"#ffa940"}>
-      <Sider
-        style={{
-          overflow: "auto",
-          height: "100vh",
-          position: "fixed",
-          left: 0,
-        }}
-      >
+      <Sider className="ant__layout__update">
         <a href="#" className="logo">
-          <Icon icon={faBookOpen} /> {" "}E-Learning
+          <Icon icon={faBookOpen} /> E-Learning
         </a>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1" icon={<AppstoreOutlined />}>

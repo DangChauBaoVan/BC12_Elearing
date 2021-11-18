@@ -88,9 +88,9 @@ export default function ListEdu() {
         <table class="table">
           <thead>
             <tr>
-              <th style={{width:"5rem"}}>STT</th>
-              <th style={{width:"17rem"}}>Mã khóa học</th>
-              <th style={{width:"45rem"}}>Tên khóa học</th>
+              <th style={{ width: "5rem" }}>STT</th>
+              <th style={{ width: "17rem" }}>Mã khóa học</th>
+              <th style={{ width: "45rem" }}>Tên khóa học</th>
               <th>Hình ảnh</th>
               <th>Lượt xem</th>
               <th>Người tạo</th>
@@ -121,45 +121,46 @@ export default function ListEdu() {
                   <td>{luotXem}</td>
                   <td>{hoTen}</td>
                   <td>
-                    <span data-toggle="popover" title="Ghi danh">
-                      <button
-                        data-toggle="modal"
-                        data-target="#exampleModalLong"
-                        className="btn btn-info btn__edit__icon"
-                        onClick={() => maKHoaHocChoAct(maKhoaHoc)}
-                      >
-                        <Icon icon={faPen} />
-                      </button>
-                    </span>
-                    <span data-toggle="popover" title="Sửa thông tin">
-                      <button
-                        className="btn btn-primary btn__edit__icon"
-                        onClick={() =>
-                          history.push({
-                            pathname: "/admin/quanlykhoahoc/capnhatkhoahoc",
-                            state: { edu },
-                          })
+                    <button
+                      className="btn btn-info btn__edit__icon"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Ghi danh"
+                      onClick={() => maKHoaHocChoAct(maKhoaHoc)}
+                    >
+                      <Icon icon={faPen} />
+                    </button>
+                    <button
+                      className="btn btn-primary btn__edit__icon"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Sửa thông tin"
+                      onClick={() =>
+                        history.push({
+                          pathname: "/admin/quanlykhoahoc/capnhatkhoahoc",
+                          state: { edu },
+                        })
+                      }
+                    >
+                      <Icon icon={faEdit} />
+                    </button>
+                    <button
+                      className="btn btn-danger btn__edit__icon"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Xóa"
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            "Bạn có chắc muốn xóa khóa học này không"
+                          )
+                        ) {
+                          dispatch(actXoaKhoaHoc(maKhoaHoc, accessToken));
                         }
-                      >
-                        <Icon icon={faEdit} />
-                      </button>
-                    </span>
-                    <span data-toggle="popover" title="Xóa">
-                      <button
-                        className="btn btn-danger btn__edit__icon"
-                        onClick={() => {
-                          if (
-                            window.confirm(
-                              "Bạn có chắc muốn xóa khóa học này không"
-                            )
-                          ) {
-                            dispatch(actXoaKhoaHoc(maKhoaHoc, accessToken));
-                          }
-                        }}
-                      >
-                        <Icon icon={faUserSlash} />
-                      </button>
-                    </span>
+                      }}
+                    >
+                      <Icon icon={faUserSlash} />
+                    </button>
                   </td>
                 </tr>
               );

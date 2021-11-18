@@ -98,7 +98,7 @@ export default function ListUser() {
                 <tr>
                   <td>{quantity + 1}</td>
                   <td>{taiKhoan}</td>
-                  <td>{matKhau}</td>
+                  <td style={{textTransform:"none"}}>{matKhau}</td>
                   <td style={{ textTransform: "none" }}>{hoTen}</td>
                   <td>{email}</td>
                   <td>{soDt}</td>
