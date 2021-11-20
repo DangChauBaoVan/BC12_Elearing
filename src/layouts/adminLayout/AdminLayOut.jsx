@@ -15,8 +15,11 @@ import {
 //ant design
 import { Layout, Menu } from "antd";
 import { AppstoreOutlined, TeamOutlined } from "@ant-design/icons";
+
 import { actLogOut } from "containers/shared/Auth/Login/module/action";
+
 const { Header, Content, Sider } = Layout;
+
 
 function AdminLayout({ children }) {
   const dispatch = useDispatch();
