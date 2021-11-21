@@ -153,11 +153,19 @@ html::-webkit-scrollbar-thumb{
   padding: 1.2rem;
   font-size: 1.7rem;
   font-weight: bolder;
+  background: linear-gradient(to bottom, var(--dark-color) 50%, var(--yellow) 50%);
+  background-size: 100% 200%;
+  background-position: bottom left;
+  transition: all .5s ease-out;
+  &:hover{
+    background-position: top left;
+  }
 }
 
-.header .header-2 .navbar2 a:hover {
-  background: var(--dark-color);
-}
+// .header .header-2 .navbar2 a:hover {
+  
+//   background: var(--dark-color);
+// }
 
 .header .header-2.active {
   position: fixed;
@@ -197,8 +205,29 @@ html::-webkit-scrollbar-thumb{
   background: var(--dark-color);
   display: none;
   transition: all .5s linear;
+  z-index: 99999;
   &:hover{
     display: block;
+  }
+}
+#categoryNavbar a{
+  background: var(--dark-color);
+  position: relative;
+  &::before{
+    content: '';
+    width: 0;
+    height: 5px;
+
+    background: var(--gradient);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transition: all 0.5s;
+  }
+  &:hover{
+    &::before{
+      width: 100%;
+    }
   }
 }
 #category:hover ~ .categoryContent {
@@ -298,6 +327,7 @@ html::-webkit-scrollbar-thumb{
 
     .header .header-1 .search-form.active{
         top:115%;
+        z-index: 999;
     }
     
     #listContent:hover ~ .categoryContent{

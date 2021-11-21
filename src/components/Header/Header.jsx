@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import "./Header.scss";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
@@ -26,7 +27,7 @@ const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.toggle("active");
 };
-const clickSearch = () => {
+const clickSearch1 = () => {
   let searchForm = document.querySelector(".search-form");
   searchForm.classList.toggle("active");
 };
@@ -48,19 +49,26 @@ export default function Header() {
       searchValue:""
     },
     onSubmit: (values) => {
-      console.log("values: ", values);
-      history.push(`/searchResult/${values.searchValue}`);
+      if(values.searchValue!==""){
+        history.push(`/searchResult/${values.searchValue}`);
+      }
+      
       
     },
   });
-
+const clickSearch = () => {
+  if(formik.values.searchValue ===""){
+    return;
+  }
+  history.push(`/searchResult/${formik.values.searchValue}`);
+}
   return (
     <div>
       <header className="header">
         <div className="header-1">
-          <a href="#" className="logo">
+          <Link to="/" className="logo">
             <Icon icon={faBookOpen} /> <i className="" /> E-Learning
-          </a>
+          </Link>
           <form className="search-form" onSubmit={(event) => {
           event.preventDefault();
           formik.handleSubmit(event);
@@ -73,7 +81,7 @@ export default function Header() {
               placeholder="Tìm khóa học"
               id="search-box"
             />
-            <label htmlFor="search-box" className="fas fa-search">
+            <label htmlFor="search-box" className="fas fa-search" onClick={clickSearch}>
               <Icon icon={faSearch} />
             </label>
           </form>
@@ -82,9 +90,9 @@ export default function Header() {
             <div
               id="search-btn"
               className="fas fa-search"
-              onClick={clickSearch}
+              onClick={clickSearch1}
             >
-              <Icon icon={faSearch} />
+              <Icon icon={faSearch}/>
             </div>
             <a href="#" className="fas fa-heart">
               <Icon icon={faHeart} className="faEditIcon" />
@@ -103,7 +111,7 @@ export default function Header() {
                   <img src="https://picsum.photos/200" alt="" />
                 </a>
                 <div className="dropdown-menu dropdown-menu-right dropdown-menu-lg-right">
-                  <button className="dropdown-item" type="button">
+                  <Link to="/userInfo" className="dropdown-item" type="button">
                     <div className="itemConent d-flex  align-items-center">
                       <img src="https://picsum.photos/200" alt="" />
                       <div className="itemInfo d-flex flex-column">
@@ -111,7 +119,7 @@ export default function Header() {
                         <p>{currentUser.email}</p>
                       </div>
                     </div>
-                  </button>
+                  </Link>
                   <div class="dropdown-divider"></div>
                   {currentUser.maLoaiNguoiDung === "GV" ? (
                     <>
@@ -150,14 +158,14 @@ export default function Header() {
         </div>
         <div className="header-2">
           <nav className="navbar2">
-            <a href="#home">Trang Chủ</a>
+            <Link to="/">Trang Chủ</Link>
             <a href="#featured" id="category">
               Danh Mục
             </a>
             <div className="categoryContent">
               <nav id="categoryNavbar">
                 {danhMucKhoaHoc.map((dmkh,index)=>
-                  (<a href="#" key={index}>{dmkh.tenDanhMuc}</a>)
+                  (<Link to={`/courseCatalog/${dmkh.maDanhMuc}`} key={index}>{dmkh.tenDanhMuc}</Link>)
                 )}
                 {/* <a href="#home">Trang Chủ</a>
                 <a href="#featured">Danh Mục</a>
@@ -167,7 +175,7 @@ export default function Header() {
               </nav>
             </div>
 
-            <a href="#reviews">Đánh Giá</a>
+            <a href="#testimonial">Đánh Giá</a>
             <a href="#arrivals">Liên Hệ</a>
           </nav>
         </div>

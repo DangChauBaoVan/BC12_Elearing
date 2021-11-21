@@ -1,9 +1,10 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
-export default function SkeletonLoading() {
+export default function SkeletonLoading(props) {
+  const { amountItems} = props;
   return (
     <>
-      {Array(8)
+      {Array(amountItems)
         .fill()
         .map((item, index) => (
           <div className="box" key={index}>

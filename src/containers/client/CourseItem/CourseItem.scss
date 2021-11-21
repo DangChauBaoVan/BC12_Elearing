@@ -37,18 +37,7 @@
     text-decoration: underline;
   }
 
-  .content p {
-    padding: 1rem 0;
-    color: #666;
-    font-size: 1.5rem;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-word;
-  }
 
   .content .info {
     display: flex;
@@ -82,4 +71,20 @@
     color: #fff;
     font-size: 3rem;
   }
+  .moTa{
+    height: 8rem;
+    padding: 1rem 0;
+    color: #666;
+    font-size: 1.5rem;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    margin-bottom: auto;
+  }
+  
 }

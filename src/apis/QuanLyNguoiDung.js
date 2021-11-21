@@ -5,6 +5,9 @@ const quanLyNguoiDungApi = {
    
     loginApi(loginInfo) {
         return callApi(`QuanLyNguoiDung/DangNhap`,'POST',loginInfo)
+    },
+    getUserInfoApi(account,token){
+        return callApi(`QuanLyNguoiDung/ThongTinTaiKhoan`,'POST',account,token)
     }
 }
 

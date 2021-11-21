@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./PageNotFound.scss"
 export default function PageNotFound() {
   return (
@@ -13,9 +14,9 @@ export default function PageNotFound() {
               <div className="contant_box_404">
                 <h3 className="h2">Look like you're lost</h3>
                 <p>the page you are looking for not avaible!</p>
-                <a href className="link_404">
+                <Link to="/" className="link_404">
                   Go to Home
-                </a>
+                </Link>
               </div>
             </div>
           </div>

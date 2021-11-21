@@ -42,7 +42,7 @@ function App() {
         <Switch>
           {renderLayout(clientRoutes)}
           {renderAdmin(adminRoutes, AdminLayOut)}
-          <Route path="/login" component={Login} />
+          {/* <Route path="/login" component={Login} /> */}
           <Route path="/register" component={Register} />
           <Route path="*" component={PageNotFound} />
         </Switch>

@@ -211,12 +211,15 @@
       border: none;
       background: var(--gradient);
       color: #fff;
-      transition: all 0.5s linear;
+      transition: all 0.2s linear;
+      &:hover{
+        background: #fff;
+        border: 0.2rem solid var(--yellow);
+        color:var(--yellow);
+      }
     }
 
-    form .form-field input[type="submit"]:hover {
-      background-color: var(--gradient2);
-    }
+    
     .floating-dot-left {
       position: absolute;
       left: 2%;
@@ -280,7 +283,7 @@
       float: none;
     }
     #contact {
-      .floating-dot {
+      .floating-dot-left,.floating-dot-right {
         display: none;
       }
     }

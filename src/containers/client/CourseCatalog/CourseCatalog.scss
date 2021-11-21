@@ -1,0 +1,107 @@
+:root {
+  --violet: #6c5ce7;
+  --pink: #fc427b;
+  --gradient2: linear-gradient(90deg, var(--violet), var(--pink));
+}
+.ccHeading {
+  color: transparent;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 0 1rem;
+  padding-top: 2.5rem;
+  text-align: center;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+.courseCatalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  .ccBox {
+    width: 35rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 1.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+  }
+  .ccBox img {
+    height: 20rem;
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  .ccBox .amount {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    background: var(--yellow);
+    color: #fff;
+    border-radius: 0.5rem;
+  }
+  .ccBox .stars{
+      margin-top: 1rem;
+  }
+  .ccBox .stars i {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    padding: 1rem 0;
+  }
+
+  .ccBox h3 {
+    color: var(--black);
+    font-size: 2.5rem;
+  }
+
+  .ccBox p {
+    color: #666;
+    font-size: 1.5rem;
+    padding: 0.5rem 0;
+  }
+  .tenKhoaHoc {
+    height: 5.5rem;
+    margin-top: 2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+
+    margin-bottom: auto;
+  }
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    padding: 0.5rem;
+    padding-top: 1rem;
+  }
+
+  .icons p {
+    color: #666;
+    font-size: 1.3rem;
+  }
+
+  .icons p i {
+    padding-right: 0.4rem;
+    color: var(--yellow);
+  }
+  .moTa {
+    height: 8rem;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    margin-bottom: auto;
+  }
+}

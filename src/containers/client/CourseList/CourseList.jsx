@@ -7,11 +7,12 @@ import "./CourseList.scss";
 import Skeleton from "react-loading-skeleton";
 import SkeletonLoading from "components/SkeletonLoading/SkeletonLoading";
 import { useState } from "react";
+import useWindowDimensions from "components/GetViewPort/GetWindowDimensions";
 
 export default function CourseList() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth > 1200);
+  
   const { danhSachKhoaHoc, err } = useSelector(
     (state) => state.courseListReducer
   );
@@ -20,17 +21,12 @@ export default function CourseList() {
     const timing = setTimeout(() => {
       dispatch(actLayDanhSachKhoaHoc());
       setLoading(false);
-    }, 1000);
-    window.addEventListener(
-      "resize",
-      () => {
-        const ismobile = window.innerWidth > 1200;
-        if (ismobile !== isMobile) setIsMobile(ismobile);
-      },
-      false
-    );
+    }, 3000);
+    
     return () => clearTimeout(timing);
-  }, [isMobile]);
+  }, []);
+  const {width} = useWindowDimensions();
+  console.log(width);
   const renderKhoaHoc = () => {
     const dsKhoaHocMoi = danhSachKhoaHoc.slice(0, 8);
     console.log(dsKhoaHocMoi);
@@ -39,13 +35,13 @@ export default function CourseList() {
     });
   };
   const RenderSkeleton = () => {
-    return <SkeletonLoading />;
+    return <SkeletonLoading amountItems={8} />;
   };
 
   return (
     <section className="course" id="course">
-      <h1 className="heading">các khóa học mới nhất</h1>
-      <div className={`box-container ${isMobile ? "container-fluid" : ""}`}>
+      <h1 className="ccHeading">các khóa học mới nhất</h1>
+      <div className="box-container" className={width > 1600 ? "box-container container-fluid" : "box-container"}>
         {loading ? RenderSkeleton() : renderKhoaHoc()}
       </div>
     </section>

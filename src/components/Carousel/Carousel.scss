@@ -1,0 +1,87 @@
+.carousel {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  background: url(../../assets/images/bgUser.jpg) no-repeat;
+  background-size: cover;
+  background-position: top;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+  .btnDK{
+    padding:.7rem 3rem;
+    font-size: 2rem;
+    color:#fff;
+    background:var(--gradient);
+    border-radius: 5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 .1rem .3rem rgba(0,0,0,.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+.btnDK::before{
+    content: '';
+    position: absolute;
+    top:-1rem; left:-100%;
+    background:#fff9;
+    height:150%;
+    width:20%;
+    transform: rotate(25deg);
+    z-index: -1;
+}
+
+.btnDK:hover::before{
+    transition: .3s linear;
+    left: 120%;
+}
+  h1 {
+    font-size: 6rem;
+    color: #666;
+  }
+
+  p {
+    font-size: 1.9rem;
+    color: #999;
+    padding: 1rem 0;
+    width: 70rem;
+  }
+
+  .shape {
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    height: 15rem;
+    width: 100%;
+    background: url(../../assets/images/shape.png);
+    block-size: 100rem 15rem;
+    filter: drop-shadow(0 -0.1rem 0.1rem rgba(0, 0, 0, 0.2));
+    animation: animate 10s linear infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      background-position-x: 0rem;
+    }
+
+    100% {
+      background-position-x: 100rem;
+    }
+  }
+}
+
+@media(max-width: 768px){
+    .carousel{
+         h1{
+            font-size: 4rem;
+        }
+    
+         p{
+            width: auto;
+        }
+    }
+    
+}

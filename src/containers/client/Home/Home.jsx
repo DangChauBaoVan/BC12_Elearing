@@ -16,6 +16,7 @@ import {
 import paperAirPlane from "../../../assets/images/paperPlane.png"
 import Footer from "components/Footer/Footer";
 import ScrollToTop from "components/ScrollToTop/ScrollToTop";
+import Carousel from "components/Carousel/Carousel";
 export default function Home() {
     useEffect(function () {
         Aos.init({
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <div id="home">
       <Header />
+      <Carousel/>
       <CourseList />
       <section id="testimonial">
         <h1 className="heading2">Học Viên nói gì?</h1>
@@ -138,7 +140,7 @@ export default function Home() {
                   <Icon icon={faComment} /> Message
                 </label>
               </div>
-              <div className="form-field">
+              <div className="form-field dangKyButton">
                 <input type="submit" placeholder="Đăng Ký Tư Vấn" value="Đăng Ký Tư Vấn "/>
               </div>
             </form>

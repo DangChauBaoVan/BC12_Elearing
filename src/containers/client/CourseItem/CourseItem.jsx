@@ -12,18 +12,17 @@ import {
 
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function CourseItem(props) {
-  const { hinhAnh, tenKhoaHoc, moTa, luotXem } = props.khoaHoc;
+  const { hinhAnh, tenKhoaHoc, moTa, luotXem,maKhoaHoc } = props.khoaHoc;
 
   return (
     <div className="box">
-        
-      <img src={hinhAnh} alt />
+      <img src={hinhAnh} onError={(e)=>{e.target.onerror = null; e.target.src="https://picsum.photos/200/300"}} alt />
       <h3 className="price">$50</h3>
-      <div className="content">
-      
-        <div className="stars text-left">
+      <div className="content text-left">
+        <div className="stars">
           <i className="fas fa-star">
             <Icon icon={faStar} />
           </i>
@@ -46,10 +45,13 @@ export default function CourseItem(props) {
             (<Icon icon={faEye} /> {luotXem})
           </i>
         </div>
-        <a href="#" className="title">
+        <Link to={`/courseDetails/${maKhoaHoc}`} className="title ">
           {tenKhoaHoc}
-        </a>
-        <p>{moTa}</p>
+        </Link>
+        <div className="moTa">
+          <p>{moTa}</p>
+        </div>
+
         <div className="info">
           <h3>
             {" "}
