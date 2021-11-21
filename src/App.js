@@ -1,10 +1,10 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { adminRoutes, clientRoutes } from "routes/routes";
-import Login from "containers/shared/Auth/Login/Login";
 import Register from "containers/shared/Auth/Register/Register";
 import PageNotFound from "containers/shared/PageNotFound/PageNotFound";
 import AdminLayOut from "layouts/adminLayout/AdminLayOut";
+import ScrollToTop from "components/ScrollToTop/ScrollToTop";
 
 function App() {
   const renderLayout = (routes) => {
@@ -42,11 +42,11 @@ function App() {
         <Switch>
           {renderLayout(clientRoutes)}
           {renderAdmin(adminRoutes, AdminLayOut)}
-          {/* <Route path="/login" component={Login} /> */}
           <Route path="/register" component={Register} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </Router>
+      <ScrollToTop />
     </div>
   );
 }

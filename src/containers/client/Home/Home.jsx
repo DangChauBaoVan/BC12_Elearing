@@ -15,7 +15,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import paperAirPlane from "../../../assets/images/paperPlane.png"
 import Footer from "components/Footer/Footer";
-import ScrollToTop from "components/ScrollToTop/ScrollToTop";
 import Carousel from "components/Carousel/Carousel";
 export default function Home() {
     useEffect(function () {
@@ -162,9 +161,7 @@ export default function Home() {
           <img src={paperAirPlane} alt />
         </div>
       </section>
-
       <Footer/>
-      <ScrollToTop/>
     </div>
   );
 }

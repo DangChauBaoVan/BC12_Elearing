@@ -1,4 +1,4 @@
-import quanLyNguoiDungApi from "apis/QuanLyNguoiDung"
+import quanLyNguoiDungApi from "../../../../apis/QuanLyNguoiDung"
 import { GET_USER_INFO_FAIL, GET_USER_INFO_SUCCESS } from "./type"
 const actGetUserInfoSuccess = (userInfo) => ({
     type: GET_USER_INFO_SUCCESS,

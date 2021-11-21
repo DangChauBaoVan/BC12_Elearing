@@ -123,7 +123,8 @@ export default function ListEdu() {
                   <td>
                     <button
                       className="btn btn-info btn__edit__icon"
-                      data-toggle="tooltip"
+                      data-target="#exampleModalLong"
+                      data-toggle="modal"
                       data-placement="top"
                       title="Ghi danh"
                       onClick={() => maKHoaHocChoAct(maKhoaHoc)}

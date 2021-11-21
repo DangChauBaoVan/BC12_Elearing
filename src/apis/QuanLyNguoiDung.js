@@ -2,16 +2,11 @@ import { GROUP_ID } from "settings/apiConfig";
 import callApi from "utils/callApi";
 
 const quanLyNguoiDungApi = {
-<<<<<<< HEAD
-   
-    loginApi(loginInfo) {
-        return callApi(`QuanLyNguoiDung/DangNhap`,'POST',loginInfo)
-    },
-    getUserInfoApi(account,token){
-        return callApi(`QuanLyNguoiDung/ThongTinTaiKhoan`,'POST',account,token)
-=======
   loginApi(loginInfo) {
     return callApi(`QuanLyNguoiDung/DangNhap`, "POST", loginInfo);
+  },
+  getUserInfoApi(account, token) {
+    return callApi(`QuanLyNguoiDung/ThongTinTaiKhoan`, "POST", account, token);
   },
   dangKy(form) {
     return callApi(`QuanLyNguoiDung/DangKy`, "POST", form);
@@ -21,7 +16,6 @@ const quanLyNguoiDungApi = {
       return callApi(
         `QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}&tuKhoa=${tenNguoiDung}`
       );
->>>>>>> 2df33a757c975c58fca60fd0e5a81d368001b0e2
     }
     return callApi(`QuanLyNguoiDung/TimKiemNguoiDung?MaNhom=${GROUP_ID}`);
   },

@@ -43,7 +43,6 @@ export default function CourseCatalog() {
     <>
       <Header />
       <h1 class="ccHeading">
-        {" "}
         {danhSachKhoaHoc[0]?.danhMucKhoaHoc.tenDanhMucKhoaHoc}
       </h1>
       <div className={width > 1600 ? "courseCatalog container-fluid": "courseCatalog "} >

@@ -2,44 +2,41 @@ import Header from "components/Header/Header";
 import React from "react";
 import "./UserInfo.scss";
 import userImage from "../../../assets/images/teacher-3.png";
-import userBg from "../../../assets/images/bgUser.jpg";
 import Footer from "components/Footer/Footer";
-import Carousel from "components/Carousel/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { actGetUserInfo } from "../UserInfomation/module/action";
 import { Redirect } from "react-router-dom";
+import { actHuyNguoiDungGhiDanh } from "containers/admin/quanLyNguoiDung/ghiDanh/moduleThemXoaSua/action";
+import sadImage from "assets/images/sad.png"
+//
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
-import {
-  faStar,
-  faStarHalf,
-  faClock,
-  faCalendarAlt,
-  faBook,
-  faEye,
-} from "@fortawesome/free-solid-svg-icons";
+import { faStar, faStarHalf, faEye } from "@fortawesome/free-solid-svg-icons";
 import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
+
 export default function Userinfo() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.loginReducer);
   const { userInfo } = useSelector((state) => state.userInfoReducer);
+
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     setLoading(true);
     const account = {
       taiKhoan: currentUser?.taiKhoan,
       matKhau: "string",
     };
-    console.log(account);
-
     const timing = setTimeout(() => {
       dispatch(actGetUserInfo(account, currentUser?.accessToken));
       setLoading(false);
     }, 1000);
     return () => clearTimeout(timing);
   }, []);
+
   const [isDisabledTK, setDisabledTK] = useState(false);
   const [isDisabledKH, setDisabledKH] = useState(true);
+
   const handleSwitchTabTK = () => {
     setDisabledTK(false);
     setDisabledKH(true);
@@ -50,6 +47,21 @@ export default function Userinfo() {
     setDisabledKH(false);
   };
   const [result, setResult] = useState();
+
+  // load danh sách
+  const [refreshKey, setRefreshKey] = useState(-1);
+
+  //hủy người dùng vào khóa học
+  const huyKhoaHoc = (maKhoaHoc, index) => {
+    dispatch(
+      actHuyNguoiDungGhiDanh(
+        { taiKhoan: currentUser.taiKhoan, maKhoaHoc: maKhoaHoc },
+        currentUser.accessToken
+      )
+    );
+    setRefreshKey(index)
+  };
+
   useEffect(async () => {
     try {
       let result = await quanLyKhoaHoc.layDanhSachKhoaHoc();
@@ -57,80 +69,88 @@ export default function Userinfo() {
     } catch (error) {
       setResult("err");
     }
-  }, []);
+  }, [refreshKey]);
+
+  if (!currentUser) {
+    return <Redirect to="/"/>
+  }
+
   const { chiTietKhoaHocGhiDanh: ctkh } = userInfo;
 
   console.log(ctkh);
   const renderKhoaHoc = () => {
-    let dskh = []
+    let dskh = [];
     console.log(ctkh);
-    ctkh?.map(ctkh => {
-      result?.map(result =>{
-        if(result.maKhoaHoc === ctkh.maKhoaHoc){
-          dskh.push(result)
+    ctkh?.map((ctkh) => {
+      result?.map((result) => {
+        if (result.maKhoaHoc === ctkh.maKhoaHoc) {
+          dskh.push(result);
         }
-      })
-    })
-    console.log(dskh);
-    
-      return dskh?.map((kh, index) => {
-        return (
-          <div className="resultBox" key={index}>
-            <div class="dropdown-divider"></div>
-            <div className="row">
-              <div className="col-4">
-                <img src={kh.hinhAnh} alt="hinh" />
-              </div>
-              <div className="col-8  text-left">
-                <div className="row">
-                  <div className="col-9 col-md-8">
-                    <div className="contentRight">
-                      <div className="contentTitle">
-                        <h3>{kh.tenKhoaHoc}</h3>
-                      </div>
-                      <div className="contentRating">
-                        <div className="stars text-left">
-                          <i className="fas fa-star">
-                            <Icon icon={faStar} />
-                          </i>
-                          <i className="fas fa-star">
-                            <Icon icon={faStar} />
-                          </i>
-                          <i className="fas fa-star">
-                            <Icon icon={faStar} />
-                          </i>
-                          <i className="fas fa-star">
-                            <Icon icon={faStar} />
-                          </i>
-                          <i className="fas fa-star">
-                            <Icon icon={faStarHalf} />
-                          </i>
-                          <i
-                            className="fas fa-star"
-                            style={{ fontSize: "1.3rem", color: "#444" }}
-                          >
-                            {kh.luotXem}
-                            (<Icon icon={faEye} />)
-                          </i>
-                        </div>
-                      </div>
-                      <div className="contentDescription">
-                        <p>{kh.moTa}</p>
-                      </div>
-                      <p></p>
+      });
+    });
+
+    return dskh.length > 0 ? (dskh?.map((kh, index) => {
+      return (
+        <div className="resultBox" key={index}>
+          <div class="dropdown-divider"></div>
+          <div className="row">
+            <div className="col-4">
+              <img src={kh.hinhAnh} alt="hinh" />
+            </div>
+            <div className="col-8  text-left">
+              <div className="row">
+                <div className="col-9 col-md-8">
+                  <div className="contentRight">
+                    <div className="contentTitle">
+                      <h3>{kh.tenKhoaHoc}</h3>
                     </div>
+                    <div className="contentRating">
+                      <div className="stars text-left">
+                        <i className="fas fa-star">
+                          <Icon icon={faStar} />
+                        </i>
+                        <i className="fas fa-star">
+                          <Icon icon={faStar} />
+                        </i>
+                        <i className="fas fa-star">
+                          <Icon icon={faStar} />
+                        </i>
+                        <i className="fas fa-star">
+                          <Icon icon={faStar} />
+                        </i>
+                        <i className="fas fa-star">
+                          <Icon icon={faStarHalf} />
+                        </i>
+                        <i
+                          className="fas fa-star"
+                          style={{ fontSize: "1.3rem", color: "#444" }}
+                        >
+                          {kh.luotXem}
+                          (<Icon icon={faEye} />)
+                        </i>
+                      </div>
+                    </div>
+                    <div className="contentDescription">
+                      <p>{kh.moTa}</p>
+                    </div>
+                    <p></p>
                   </div>
-                  <div className="col-3 col-md-4 text-right">
-                    <h2 className="price">$50</h2>
-                    <button className="btn">Hủy</button>
-                  </div>
+                </div>
+                <div className="col-3 col-md-4 text-right">
+                  <h2 className="price">$50</h2>
+                  <button
+                    onClick={() => huyKhoaHoc(kh.maKhoaHoc, index)}
+                    className="btn"
+                  >
+                    Hủy
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-        );
-      });
-    
+        </div>
+      );
+    } )): <div><img style={{width:"50px", height:"50px"}} src={sadImage} alt="..." /> <p>vui lòng đăng ký khóa học</p></div> ;
   };
   return currentUser ? (
     <>
@@ -349,7 +369,6 @@ export default function Userinfo() {
                             </div>
                           </div>
                         </div>
-                        
                       </form>
                     </div>
                   </div>
@@ -364,7 +383,9 @@ export default function Userinfo() {
                         </div>
                       </div>
                     </div>
-                    <div className="card-body bg-white khoaHoc">{renderKhoaHoc()}</div>
+                    <div className="card-body bg-white khoaHoc">
+                      {renderKhoaHoc()}
+                    </div>
                   </div>
                 </div>
               </div>

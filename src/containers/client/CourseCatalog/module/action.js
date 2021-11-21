@@ -1,4 +1,4 @@
-import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
+import quanLyKhoaHoc from "../../../../apis/QuanLyKhoaHoc"
 import { GET_COURSE_BY_CATALOG_FAIL, GET_COURSE_BY_CATALOG_REQUEST, GET_COURSE_BY_CATALOG_SUCCESS } from "./type";
 
 const actGetCourseByCataLogRequest = () => ({
@@ -15,6 +15,7 @@ const actGetCourseByCataLogFail = (err) => ({
 
 export const actGetCourseByCataLog = (courseCatalogID) =>{
     return dispatch => {
+
         dispatch(actGetCourseByCataLogRequest());
         quanLyKhoaHoc.layDSKhoaHocTheoDanhMuc(courseCatalogID)
         .then(respone => {

@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
 import Footer from "components/Footer/Footer";
+import { Link } from "react-router-dom";
 export default function SearchResult(props) {
   const { searchValue } = useParams();
   const [searchResult, setResult] = useState();
@@ -55,7 +56,7 @@ export default function SearchResult(props) {
         </h1>
         {searchResult.map((item, index) => {
           return (
-            <div className="resultBox" key={index}>
+            <Link to={`/courseDetails/${item.maKhoaHoc}`} className="resultBox" key={index}>
               <div class="dropdown-divider"></div>
               <div className="row">
                 <div className="col-4">
@@ -106,7 +107,7 @@ export default function SearchResult(props) {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           );
         })}
       </section>
