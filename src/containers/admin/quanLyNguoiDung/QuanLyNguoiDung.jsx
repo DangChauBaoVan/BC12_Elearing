@@ -15,7 +15,7 @@ export default function QuanLyNguoiDung() {
         type="button"
         className="btn themNguoiDung"
       >
-        Thêm Nguoif Dùng
+        Thêm Người Dùng
       </button>
       <ListUser />
     </div>

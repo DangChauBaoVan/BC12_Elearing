@@ -211,8 +211,6 @@ html::-webkit-scrollbar-thumb {
   display: none;
   transition: all 0.5s linear;
   z-index: 99999;
-  // &:hover{
-  // transition: all 0.5s linear;
   &:hover {
     display: block;
   }
@@ -328,11 +326,6 @@ html::-webkit-scrollbar-thumb {
 
   .header .header-1 .search-form.active {
     top: 115%;
-  }
-
-  .header .header-1 .search-form.active {
-    top: 115%;
-    z-index: 999;
   }
 
   #listContent:hover ~ .categoryContent {
