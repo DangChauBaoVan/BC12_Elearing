@@ -1,8 +1,10 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const withLayout = (WrappedComponent) => {
   return ({ component: Component, isPrivate, ...rest }) => {
+    const currentUser = useSelector((state) => state.loginReducer.currentUser);
     const content = (
       <Route
         {...rest}
@@ -13,6 +15,17 @@ const withLayout = (WrappedComponent) => {
         )}
       />
     );
+
+    if (isPrivate) {
+      if (currentUser.maLoaiNguoiDung === "GV") {
+        return content;
+      } else {
+        return <Redirect to="/" />;
+      }
+    } else {
+      return <Redirect to="/" />;
+    }
+
     return content;
   };
 };
