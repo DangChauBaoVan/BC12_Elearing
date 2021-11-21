@@ -169,11 +169,6 @@ const clickSearch = () => {
                 {danhMucKhoaHoc.map((dmkh,index)=>
                   (<Link to={`/courseCatalog/${dmkh.maDanhMuc}`} key={index}>{dmkh.tenDanhMuc}</Link>)
                 )}
-                {/* <a href="#home">Trang Chủ</a>
-                <a href="#featured">Danh Mục</a>
-
-                <a href="#reviews">Đánh Giá</a>
-                <a href="#arrivals">Liên Hệ</a> */}
               </nav>
             </div>
 
