@@ -29,7 +29,7 @@ export default function CourseList() {
   console.log(width);
   const renderKhoaHoc = () => {
     const dsKhoaHocMoi = danhSachKhoaHoc.slice(0, 8);
-    console.log(dsKhoaHocMoi);
+    // console.log(dsKhoaHocMoi);
     return dsKhoaHocMoi.map((khoaHoc, index) => {
       return <CourseItem khoaHoc={khoaHoc} key={index} />;
     });

@@ -1,0 +1,92 @@
+.register-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  top: 0;
+  right: -105%;
+  z-index: 10000;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s linear;
+}
+
+.register-form-container.active {
+  right: 0;
+}
+
+.register-form-container form {
+  background: #fff;
+  border: var(--border);
+  width: 40rem;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  margin: 2rem;
+}
+
+.register-form-container form h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--black);
+  text-align: center;
+}
+
+.register-form-container form .box {
+  width: 100%;
+  margin: -0.3rem 0px;
+  font-size: 1.6rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.7rem;
+  color: var(--black);
+  text-transform: none;
+  position: relative;
+}
+
+.register-form-container form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.register-form-container form .checkbox label {
+  font-size: 1.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+}
+
+.register-form-container form .btn {
+  text-align: center;
+  width: 100%;
+}
+
+.register-form-container form p {
+  color: var(--light-color);
+  font-size: 1.5rem;
+}
+.register-form-container form .text-danger {
+  font-size: 13px;
+}
+.register-form-container form .text__err {
+  height: 38px;
+}
+
+.register-form-container #close-register-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 2.5rem;
+  font-size: 5rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.border__red {
+  border: solid 0.5px #dc3545 !important;
+}
+
+.border_green {
+  border: solid 0.5px rgb(62, 160, 62) !important;
+}

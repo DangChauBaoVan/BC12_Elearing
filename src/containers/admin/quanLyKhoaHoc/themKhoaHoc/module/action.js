@@ -1,4 +1,4 @@
-import { apiKhoaHoc } from "apis/apiKhoaHoc/apiKhoaHoc";
+import quanLyKhoaHoc from "apis/QuanLyKhoaHoc";
 
 import {
   GET_MA_KHOA_HOC_SUCCESS,
@@ -21,8 +21,7 @@ const actFetchAllMovieFalse = (err) => ({
 export const actMaDanhMuc = () => {
   return (dispatch) => {
     dispatch(actFetchMaKhoaHocRequest());
-    apiKhoaHoc
-      .layDanhSachDanhMuckhoaHoc()
+    quanLyKhoaHoc.layDanhMucKhoaHoc()
       .then((res) => {
         dispatch(actFetchMaKhoaHocSuccess(res.data));
       })
@@ -34,7 +33,7 @@ export const actMaDanhMuc = () => {
 
 export const actThemKhoaHoc = (form, history) => {
   return (dispatch) => {
-    apiKhoaHoc
+    quanLyKhoaHoc
       .themKhoaHoc(form)
       .then((res) => {
         console.log(res.data);

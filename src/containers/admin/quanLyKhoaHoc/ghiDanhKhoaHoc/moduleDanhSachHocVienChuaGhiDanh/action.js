@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
+import quanLyNguoiDungApi from "apis/QuanLyNguoiDung";
 import { DANH_SACH_NGUOI_DUNG_CHUA_GHI_DANH } from "./type";
 
 
@@ -10,7 +10,7 @@ const actDanhSachNGuoiDungChuaGhiDanhSuccess = (data) => ({
 // action danh sách người dùng chưa đăng kí
 const actDanhSachNguoiDungChuaGhiDanh = (maKkhoaHoc, accessToken) => {
   return (dispatch) => {
-    apiNguoiDung
+    quanLyNguoiDungApi
       .danhSachNguoiDungChuaGhiDanh(maKkhoaHoc, accessToken)
       .then((res) => {
         dispatch(actDanhSachNGuoiDungChuaGhiDanhSuccess(res.data));

@@ -1,8 +1,8 @@
-import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
+import quanLyNguoiDungApi from "apis/QuanLyNguoiDung";
 
 export const actThemNguoiDung = (form, accessToken, history) => {
   return (dispatch) => {
-    apiNguoiDung
+    quanLyNguoiDungApi
       .themNguoiDung(form, accessToken)
       .then((res) => {
         alert("Thêm người dùng thành công");

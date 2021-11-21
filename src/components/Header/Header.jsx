@@ -12,6 +12,7 @@ import {
   faList,
   faComment,
   faBlog,
+  faUserEdit,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Login from "containers/shared/Auth/Login/Login";
@@ -23,6 +24,7 @@ import { actLayDanhMucKhoaHoc } from "./module/action";
 import { useEffect } from "react";
 import { useFormik } from "formik";
 import { useHistory } from "react-router-dom";
+
 const handleOnClick = () => {
   let loginForm = document.querySelector(".login-form-container");
   loginForm.classList.toggle("active");
@@ -31,6 +33,7 @@ const clickSearch1 = () => {
   let searchForm = document.querySelector(".search-form");
   searchForm.classList.toggle("active");
 };
+
 export default function Header() {
   const { currentUser } = useSelector((state) => state.loginReducer);
   const {danhMucKhoaHoc} = useSelector((state) => state.headerReducer)
@@ -38,7 +41,6 @@ export default function Header() {
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(actLogOut());
-
   }
   useEffect(() => {
     dispatch(actLayDanhMucKhoaHoc());
@@ -108,7 +110,7 @@ const clickSearch = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img src="https://picsum.photos/200" alt="" />
+                  <img src="https://picsum.photos/200" alt="..." />
                 </a>
                 <div className="dropdown-menu dropdown-menu-right dropdown-menu-lg-right">
                   <Link to="/userInfo" className="dropdown-item" type="button">
@@ -153,7 +155,7 @@ const clickSearch = () => {
               >
                 <Icon icon={faUser} className="faEditIcon" />
               </a>
-            )}
+            )},
           </div>
         </div>
         <div className="header-2">
