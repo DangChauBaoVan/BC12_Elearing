@@ -1,4 +1,4 @@
-import { apiNguoiDung } from "assets/apiNguoiDung/apiNguoiDung";
+import { apiNguoiDung } from "apis/apiNguoiDung/apiNguoiDung";
 
 const { GET_ALL_REQUEST, GET_ALL_SUCCESS, GET_ALL_FAIL } = require("./type");
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { actGetAllUser } from "../module/action";
+import { useHistory } from "react-router";
 import ReactPaginate from "react-paginate";
 import "./listUser.scss";
 import GhiDanh from "../ghiDanh/GhiDanh";
@@ -9,11 +9,19 @@ import TimNguoiDung from "../timNguoiDung/TimNguoiDung";
 import { FontAwesomeIcon as Icon } from "@fortawesome/react-fontawesome";
 import { faEdit, faPen, faUserSlash } from "@fortawesome/free-solid-svg-icons";
 
+import { actXoaNguoiDung } from "./action";
+import { actGetAllUser } from "../module/action";
+import { actdanhSachKHoaHocNguoiDungCHuaGhiDanh } from "../ghiDanh/moduleDanhSachKhoaHocChuaDangKi/action";
+import { actDanhSachKhoaHocChoXacNhan } from "../ghiDanh/moduleDanhSachKhoaHocChoXetDuyet/action";
+import { actDanhSachKhoaHocDaGhiDanh } from "../ghiDanh/modueDanhSachKhoaHocDaDangKy/action";
+
 export default function ListUser() {
   const arrUser = useSelector((state) => state.userReducer.user);
-
+  const history = useHistory();
   const dispatch = useDispatch();
-
+  const accessToken = useSelector(
+    (state) => state.loginReducer.currentUser.accessToken
+  );
   useEffect(() => {
     dispatch(actGetAllUser());
   }, []);
@@ -45,15 +53,32 @@ export default function ListUser() {
     setPageNumber(selected);
   };
 
+  const [taiKhoan, settaiKhoan] = useState()
   // search
   const searchValue = (e) => {
     // console.log(e.target.value);
     dispatch(actGetAllUser(e.target.value));
   };
+  // xóa người dùng
+  const xoaNguoiDung = (taiKhoan) => {
+    dispatch(actXoaNguoiDung(taiKhoan, accessToken))
+  }
+
+  const onChangeValue = (taiKhoan) => {
+    //lấy danh sách khóa học người dùng chưa đăng ký
+    dispatch(actdanhSachKHoaHocNguoiDungCHuaGhiDanh(taiKhoan, accessToken))
+    //lấy danh sách khóa học chờ xác nhận
+    dispatch(actDanhSachKhoaHocChoXacNhan({taiKhoan:taiKhoan}, accessToken))
+    //lấy danh sách khóa học đã ghi danh
+    dispatch(actDanhSachKhoaHocDaGhiDanh({taiKhoan:taiKhoan}, accessToken))
+    settaiKhoan(taiKhoan)
+  }
   return (
     <div>
       <TimNguoiDung searchValue={searchValue} />
-      <div className="border__table" style={{ border: "slategray solid 1px", height: "34rem" }}>
+      <div
+        className="border__table"
+      >
         <table class="table">
           <thead>
             <tr>
@@ -82,19 +107,25 @@ export default function ListUser() {
                       <button
                         data-toggle="modal"
                         data-target="#exampleModalLong"
-                        onClick={updateQuantity()}
                         className="btn btn-info btn__edit__icon"
+                        onClick={() => onChangeValue(taiKhoan)}
                       >
                         <Icon icon={faPen} />
                       </button>
                     </span>
                     <span data-toggle="popover" title="Sửa thông tin">
-                      <button className="btn btn-primary btn__edit__icon">
+                      <button
+                        className="btn btn-primary btn__edit__icon"
+                        onClick={() => history.push({
+                          pathname:"/admin/quanlynguoidung/capnhatnguoidung",
+                          state:{user}
+                        })}
+                      >
                         <Icon icon={faEdit} />
                       </button>
                     </span>
                     <span data-toggle="popover" title="Xóa">
-                      <button className="btn btn-danger btn__edit__icon">
+                      <button className="btn btn-danger btn__edit__icon" onClick={() => xoaNguoiDung(taiKhoan)}>
                         <Icon icon={faUserSlash} />
                       </button>
                     </span>
@@ -116,7 +147,7 @@ export default function ListUser() {
         disabledClassName={"disablePaginate"}
         activeClassName={"activePaginate"}
       />
-      <GhiDanh />
+      <GhiDanh taiKhoan={taiKhoan}/>
     </div>
   );
 }
