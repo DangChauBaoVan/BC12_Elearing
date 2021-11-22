@@ -15,8 +15,11 @@ import {
 //ant design
 import { Layout, Menu } from "antd";
 import { AppstoreOutlined, TeamOutlined } from "@ant-design/icons";
+
 import { actLogOut } from "containers/shared/Auth/Login/module/action";
+
 const { Header, Content, Sider } = Layout;
+
 
 function AdminLayout({ children }) {
   const dispatch = useDispatch();
@@ -24,15 +27,7 @@ function AdminLayout({ children }) {
 
   const currentUser = useSelector((state) => state.loginReducer.currentUser);
 
-  if (currentUser === null) {
-    return <Redirect to="/" />;
-  }
-
-  const { maLoaiNguoiDung, hoTen } = currentUser;
-
-  if (maLoaiNguoiDung === "HV") {
-    return <Redirect to="/" />;
-  }
+  const {  hoTen } = currentUser;
 
   const handleOut = () => {
     dispatch(actLogOut());
