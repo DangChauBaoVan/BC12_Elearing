@@ -189,8 +189,8 @@ const clickSearch = () => {
               <a href="#home">Trang Chủ</a>
               <a href="#featured">Danh Mục</a>
 
-              <a href="#reviews">Đánh Giá</a>
-              <a href="#contact">Liên Hệ</a>
+              <a href="/#reviews">Đánh Giá</a>
+              <a href="/#contact">Liên Hệ</a>
             </nav>
           </div>
           <a href="#reviews" className="fas fa-comments">

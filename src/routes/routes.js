@@ -2,7 +2,6 @@ import Home from "containers/client/Home/Home";
 
 import SearchResult from "containers/client/SearchResult/SearchResult";
 
-
 import QuanLyNguoiDung from "containers/admin/quanLyNguoiDung/QuanLyNguoiDung";
 import QuanLyKhoaHoc from "containers/admin/quanLyKhoaHoc/QuanLyKhoaHoc";
 import ThemNguoiDung from "containers/admin/quanLyNguoiDung/themNguoiDung/ThemNguoiDung";
@@ -50,10 +49,6 @@ export const clientRoutes = [
     isPrivate: false,
   },
 ]
-
-
-
-
 
 export const adminRoutes = [
   {

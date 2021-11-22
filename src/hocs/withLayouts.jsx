@@ -17,16 +17,18 @@ const withLayout = (WrappedComponent) => {
     );
 
     if (isPrivate) {
-      if (currentUser.maLoaiNguoiDung === "GV") {
-        return content;
-      } else {
+      if (currentUser === null) {
         return <Redirect to="/" />;
+      } else {
+        if (currentUser.maLoaiNguoiDung === "GV") {
+          return content;
+        } else {
+          return <Redirect to="/" />;
+        }
       }
     } else {
       return <Redirect to="/" />;
     }
-
-    return content;
   };
 };
 
