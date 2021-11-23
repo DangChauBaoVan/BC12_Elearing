@@ -84,10 +84,9 @@ export default function ListUser() {
             <tr>
               <th style={{width:"5rem"}}>STT</th>
               <th style={{width:"20rem"}}>Tài khoản</th>
-              <th style={{width:"20rem"}}>Mật khẩu</th>
               <th style={{width:"25rem"}}>Họ tên</th>
-              <th style={{width:"25rem"}}>Email</th>
-              <th>Số diện thoại</th>
+              <th style={{width:"35rem"}}>Email</th>
+              <th style={{width:"20rem"}}>Số diện thoại</th>
               <th>Thao tác</th>
             </tr>
           </thead>
@@ -98,7 +97,6 @@ export default function ListUser() {
                 <tr>
                   <td>{quantity + 1}</td>
                   <td>{taiKhoan}</td>
-                  <td style={{textTransform:"none"}}>{matKhau}</td>
                   <td style={{ textTransform: "none" }}>{hoTen}</td>
                   <td>{email}</td>
                   <td>{soDt}</td>

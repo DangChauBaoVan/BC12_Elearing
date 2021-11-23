@@ -16,8 +16,8 @@ const schema = yup.object().shape({
   tenKhoaHoc: yup
     .string()
     .required("Vui lòng nhập tên khóa học")
-    .min(2, "tên khóa học nhỏ nhất 2 ký tự")
-    .max(20, "tên khóa học tối đa 20 ký tự"),
+    .min(3, "tên khóa học nhỏ nhất 4 ký tự")
+    .max(25, "tên khóa học tối đa 25 ký tự"),
   ngayTao: yup.string().required("Vui lòng chọn ngày tạo"),
   moTa: yup
     .string()

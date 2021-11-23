@@ -23,11 +23,11 @@ const schema = yup.object().shape({
     .string()
     .required("Vui lòng nhập tài khoản")
     .min(4, "tài khoản nhỏ nhất 4 ký tự")
-    .max(10, "tài khoản tối đa 10 ký tự"),
+    .max(15, "tài khoản tối đa 15 ký tự"),
   matKhau: yup
     .string()
     .required("Vui lòng nhập mật khẩu")
-    .min(8, "mật khẩu nhỏ nhất 6 ký tự")
+    .min(8, "mật khẩu nhỏ nhất 8 ký tự")
     .max(20, "mật khẩu tối đa 20 ký tự")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,

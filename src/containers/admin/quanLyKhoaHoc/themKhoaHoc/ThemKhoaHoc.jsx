@@ -20,8 +20,8 @@ const schema = yup.object().shape({
   tenKhoaHoc: yup
     .string()
     .required("vui lòng nhập tên khóa học")
-    .min(4, "tên khóa học nhỏ nhất 4 ký tự")
-    .max(30, "tên khóa học tối đa 20 ký tự"),
+    .min(3, "tên khóa học nhỏ nhất 3 ký tự")
+    .max(25, "tên khóa học tối đa 25 ký tự"),
   ngayTao: yup.string().required("vui lòng chọn ngày tạo"),
   maDanhMucKhoaHoc: yup.string().required("vui lòng chọn danh mục khóa học"),
   hinhAnh: yup
@@ -33,7 +33,7 @@ const schema = yup.object().shape({
   moTa: yup
     .string()
     .required("Vui lòng nhập mô tả")
-    .min(10, "mô tả ít nhất 10 ký tự"),
+    .min(10, "mô tả ít nhất 10 ký tự")
 });
 
 export default function ThemKhoaHoc() {

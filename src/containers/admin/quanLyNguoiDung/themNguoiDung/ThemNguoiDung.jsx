@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   taiKhoan: yup
     .string()
     .required("Vui lòng nhập tài khoản")
-    .min(5, "tài khoản nhỏ nhất 5 ký tự")
+    .min(4, "tài khoản nhỏ nhất 4 ký tự")
     .max(15, "tài khoản tối đa 15 ký tự"),
   matKhau: yup
     .string()
@@ -27,7 +27,7 @@ const schema = yup.object().shape({
     .string()
     .required("Vui lòng nhập họ tên")
     .min(5, "mật khẩu nhỏ nhất 6 ký tự")
-    .max(100, "mật khẩu tối đa 100 ký tự"),
+    .max(50, "mật khẩu tối đa 50 ký tự"),
   email: yup
     .string()
     .required("Vui lòng nhập email")

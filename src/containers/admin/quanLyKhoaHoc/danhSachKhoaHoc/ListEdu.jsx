@@ -91,9 +91,9 @@ export default function ListEdu() {
               <th style={{ width: "5rem" }}>STT</th>
               <th style={{ width: "17rem" }}>Mã khóa học</th>
               <th style={{ width: "45rem" }}>Tên khóa học</th>
-              <th>Hình ảnh</th>
-              <th>Lượt xem</th>
-              <th>Người tạo</th>
+              <th style={{ width: "15rem" }}>Hình ảnh</th>
+              <th style={{ width: "8rem" }}>Lượt xem</th>
+              <th style={{ width: "15rem" }}>Người tạo</th>
               <th>Thao tác</th>
             </tr>
           </thead>

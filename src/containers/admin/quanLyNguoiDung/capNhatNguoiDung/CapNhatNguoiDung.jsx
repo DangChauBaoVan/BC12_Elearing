@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     .string()
     .required("Vui lòng nhập họ tên")
     .min(5, "mật khẩu nhỏ nhất 6 ký tự")
-    .max(100, "mật khẩu tối đa 100 ký tự"),
+    .max(50, "mật khẩu tối đa 50 ký tự"),
   email: yup
     .string()
     .required("Vui lòng nhập email")
