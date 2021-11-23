@@ -181,7 +181,7 @@ export default function DangKy() {
         <input
           type={passwordShown ? "text" : "password"}
           style={{ padding: "1rem 4rem 1.2rem 1rem" }}
-          className="box"
+          className={`box ${errors.matKhau?.message && "border__red"}`}
           placeholder="nhập mật khẩu"
           {...register("xacNhanMatKhau")}
         />
