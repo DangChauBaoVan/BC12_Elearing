@@ -229,13 +229,10 @@ export default function GhiDanhKhoaHoc(props) {
           <div className="modal-footer">
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-danger"
               data-dismiss="modal"
             >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Save changes
+              Đóng
             </button>
           </div>
         </div>
